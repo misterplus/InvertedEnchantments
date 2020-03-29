@@ -51,7 +51,7 @@ public class GenericEventHandler {
         }
         int j = getMaxEnchantmentLevel(getEnchantment("self_thorn"), player);
         if (j > 0) {
-            player.attackEntityFrom(DamageSource.GENERIC, j);
+            player.attackEntityFrom(DamageSource.CACTUS, (float)j / 20.0F);
         }
         int k = getMaxEnchantmentLevel(getEnchantment("depth_slower"), player);
         if (k > 0 && (player.isInsideOfMaterial(Material.WATER) || world.getBlockState(new BlockPos(player.posX, player.posY, player.posZ)).getMaterial() == Material.WATER)) {
