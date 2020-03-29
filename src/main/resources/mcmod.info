@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ivrench",
+  "name": "Inverted Enchantments",
+  "description": "A mod that adds somewhat stupid inverted enchantments, just for fun.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MisterPlus"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
