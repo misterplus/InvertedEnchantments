@@ -41,6 +41,7 @@ public class GetAllEnchantments extends CommandBase {
                         ItemEnchantedBook.addEnchantment(item, new EnchantmentData(ench, ench.getMaxLevel()));
                     }
                 }
+                item.setTranslatableName("item.ivrench.ivrench_book.name");
                 player.addItemStackToInventory(item);
                 sender.sendMessage(new TextComponentTranslation("ivrench.command.ivrench.succeed"));
                 return;
