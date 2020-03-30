@@ -28,7 +28,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.List;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
@@ -96,7 +95,7 @@ public class GenericEventHandler {
         Entity targetEntity = event.getEntity();
         if (arrow instanceof EntityArrow && hurter instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) hurter;
-            int i = getEnchantmentLevel(getEnchantment("powerless"), player.getActiveItemStack());
+            int i = getMaxEnchantmentLevel(getEnchantment("powerless"), player);
             if (i > 0) {
                 event.setAmount((float) (event.getAmount() - (float)i * 0.5D + 0.5D));
             }
