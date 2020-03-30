@@ -23,11 +23,11 @@ public abstract class MixinEntityPlayer {
             name = "flag3"
     )
     private boolean modify_flag3(boolean flag3) {
-        ItemStack itemstack = ((EntityLivingBase)(Object)this).getHeldItem(EnumHand.MAIN_HAND);
+        ItemStack itemstack = ((EntityLivingBase) (Object) this).getHeldItem(EnumHand.MAIN_HAND);
         if (itemstack.getItem() instanceof ItemSword) {
-            int level = getMaxEnchantmentLevel(getEnchantment("edgeless"), ((EntityLivingBase)(Object)this));
+            int level = getMaxEnchantmentLevel(getEnchantment("edgeless"), ((EntityLivingBase) (Object) this));
             if (level > 0) {
-                return ((EntityLivingBase)(Object)this).getEntityWorld().rand.nextInt(level + 1) == 0;
+                return ((EntityLivingBase) (Object) this).getEntityWorld().rand.nextInt(level + 1) == 0;
             }
         }
         return flag3;

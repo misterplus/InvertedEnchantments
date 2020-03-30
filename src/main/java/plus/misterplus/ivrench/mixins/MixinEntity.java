@@ -19,6 +19,6 @@ public abstract class MixinEntity {
             name = "i"
     )
     private int modify_i(int i) {
-        return EnchantmentNoProtection.getFireTimeForEntity((EntityLivingBase) (Object)this, i);
+        return EnchantmentNoProtection.getFireTimeForEntity((EntityLivingBase) (Object) this, i);
     }
 }

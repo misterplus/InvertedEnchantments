@@ -29,9 +29,9 @@ enchantment.lureless=Lureless
 enchantment.unmending=Unmending
 enchantment.vanishing=Curse of Instant Vanishing
 
-itemGroup.ivrench=Ivrench Book
+itemGroup.ivrench=Inverted Enchantment
 
-item.ivrench.ivrench_book.name=Ivrench Book
+item.ivrench.ivrench_book.name=Inverted Enchantment Book
 
 ivrench.command.ivrench.usage=Usage: /ivrench all
-ivrench.command.ivrench.succeed=A full Inverted Enchantment Book gived to you.
+ivrench.command.ivrench.succeed=A fully Inverted Enchantment Book has been gived to you.

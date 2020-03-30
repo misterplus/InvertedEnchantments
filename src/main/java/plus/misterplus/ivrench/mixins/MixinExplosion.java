@@ -29,7 +29,7 @@ public abstract class MixinExplosion {
             ),
             locals = LocalCapture.CAPTURE_FAILHARD
     )
-    private void injectDoExplosionA(CallbackInfo ci, Set set, int i, float f3, int k1, int l1, int i2, int i1, int j2, int j1, List list, Vec3d vec3d, int k2, Entity entity, double d12, double d5, double d7, double d9, double d13, double d14, double d10, double d11 ) {
+    private void injectDoExplosionA(CallbackInfo ci, Set set, int i, float f3, int k1, int l1, int i2, int i1, int j2, int j1, List list, Vec3d vec3d, int k2, Entity entity, double d12, double d5, double d7, double d9, double d13, double d14, double d10, double d11) {
         this.entity = entity;
         this.d10 = d10;
     }
@@ -43,6 +43,6 @@ public abstract class MixinExplosion {
             name = "d11"
     )
     private double modify_d11(double d11) {
-        return EnchantmentNoProtection.getBlastDamageReduction((EntityLivingBase)this.entity, d10);
+        return EnchantmentNoProtection.getBlastDamageReduction((EntityLivingBase) this.entity, d10);
     }
 }

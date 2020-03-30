@@ -25,8 +25,7 @@ public class MixinMethods {
     }
 
     public static float injectApplyPotionDamageCalculations(DamageSource source, float damage, CallbackInfoReturnable<Float> cir, int l) {
-        if (l < 0)
-        {
+        if (l < 0) {
             return damage * MathHelper.clamp(damage, -20.0F, 0.0F);
         }
         return damage;
@@ -35,8 +34,7 @@ public class MixinMethods {
     public static void injectFrostWalk(EntityLivingBase entityLivingBase, BlockPos pos) {
         int j = EnchantmentHelper.getMaxEnchantmentLevel(getEnchantment("ice_melter"), entityLivingBase);
 
-        if (j > 0)
-        {
+        if (j > 0) {
             EnchantmentIceMelter.freezeNearby(entityLivingBase, entityLivingBase.world, pos, j);
         }
     }
@@ -44,15 +42,13 @@ public class MixinMethods {
     public static void injectOnItemRightClick(ItemStack itemstack, EntityFishHook entityfishhook) {
         int l = getEnchantmentLevel(getEnchantment("lootLessFishing"), itemstack);
 
-        if (l > 0)
-        {
+        if (l > 0) {
             entityfishhook.setLuck(-l);
         }
 
         int j = getEnchantmentLevel(getEnchantment("lureless"), itemstack);
 
-        if (j > 0)
-        {
+        if (j > 0) {
             entityfishhook.setLureSpeed(-j);
         }
     }

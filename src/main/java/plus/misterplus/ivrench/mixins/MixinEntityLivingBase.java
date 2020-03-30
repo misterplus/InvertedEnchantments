@@ -25,8 +25,8 @@ public abstract class MixinEntityLivingBase extends Entity {
             at = @At("HEAD"),
             cancellable = true
     )
-    private void injectDecreaseAirSupply(int air, CallbackInfoReturnable<Integer> cir){
-        MixinMethods.injectDecreaseAirSupply(air, cir, this.rand, (EntityLivingBase) (Object)this);
+    private void injectDecreaseAirSupply(int air, CallbackInfoReturnable<Integer> cir) {
+        MixinMethods.injectDecreaseAirSupply(air, cir, this.rand, (EntityLivingBase) (Object) this);
     }
 
     @Inject(

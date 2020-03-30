@@ -58,7 +58,7 @@ public class GenericEventHandler {
         }
         int j = getMaxEnchantmentLevel(getEnchantment("self_thorn"), player);
         if (j > 0) {
-            player.attackEntityFrom(DamageSource.CACTUS, (float)j / 20.0F);
+            player.attackEntityFrom(DamageSource.CACTUS, (float) j / 20.0F);
         }
         int k = getMaxEnchantmentLevel(getEnchantment("depth_slower"), player);
         if (k > 0 && (player.isInsideOfMaterial(Material.WATER) || world.getBlockState(new BlockPos(player.posX, player.posY, player.posZ)).getMaterial() == Material.WATER)) {
@@ -80,13 +80,10 @@ public class GenericEventHandler {
         Entity targetEntity = event.getEntity();
         int i = getMaxEnchantmentLevel(getEnchantment("knockforward"), player);
         if (i > 0) {
-            if (targetEntity instanceof EntityLivingBase)
-            {
-                ((EntityLivingBase)targetEntity).knockBack(player, (float)i * 0.5F, (double) -MathHelper.sin(player.rotationYaw * 0.017453292F), (double)(MathHelper.cos(player.rotationYaw * 0.017453292F)));
-            }
-            else
-            {
-                targetEntity.addVelocity((double)(MathHelper.sin(player.rotationYaw * 0.017453292F) * (float)i * 0.5F), -0.1D, (double)(-MathHelper.cos(player.rotationYaw * 0.017453292F) * (float)i * 0.5F));
+            if (targetEntity instanceof EntityLivingBase) {
+                ((EntityLivingBase) targetEntity).knockBack(player, (float) i * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
+            } else {
+                targetEntity.addVelocity(MathHelper.sin(player.rotationYaw * 0.017453292F) * (float) i * 0.5F, -0.1D, -MathHelper.cos(player.rotationYaw * 0.017453292F) * (float) i * 0.5F);
             }
         }
 
@@ -105,17 +102,14 @@ public class GenericEventHandler {
             EntityLivingBase player = (EntityLivingBase) hurter;
             int i = getMaxEnchantmentLevel(getEnchantment("powerless"), player);
             if (i > 0) {
-                event.setAmount((float) (event.getAmount() - (float)i * 0.5D + 0.5D));
+                event.setAmount((float) (event.getAmount() - (float) i * 0.5D + 0.5D));
             }
             int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
             if (j > 0) {
-                if (targetEntity instanceof EntityLivingBase)
-                {
-                    ((EntityLivingBase)targetEntity).knockBack(player, (float)j * 0.5F, (double) -MathHelper.sin(player.rotationYaw * 0.017453292F), (double)(MathHelper.cos(player.rotationYaw * 0.017453292F)));
-                }
-                else
-                {
-                    targetEntity.addVelocity((double)(MathHelper.sin(player.rotationYaw * 0.017453292F) * (float)j * 0.5F), -0.1D, (double)(-MathHelper.cos(player.rotationYaw * 0.017453292F) * (float)j * 0.5F));
+                if (targetEntity instanceof EntityLivingBase) {
+                    ((EntityLivingBase) targetEntity).knockBack(player, (float) j * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
+                } else {
+                    targetEntity.addVelocity(MathHelper.sin(player.rotationYaw * 0.017453292F) * (float) j * 0.5F, -0.1D, -MathHelper.cos(player.rotationYaw * 0.017453292F) * (float) j * 0.5F);
                 }
             }
             int k = getMaxEnchantmentLevel(getEnchantment("aqua"), player);
@@ -156,7 +150,7 @@ public class GenericEventHandler {
 
         int i = getMaxEnchantmentLevel(getEnchantment("lootLessDigger"), event.getHarvester());
         if (i > 0) {
-            event.setDropChance(1.0F - (float)i / 3.0F);
+            event.setDropChance(1.0F - (float) i / 3.0F);
         }
 
         int j = getMaxEnchantmentLevel(getEnchantment("touching"), event.getHarvester());
@@ -169,7 +163,7 @@ public class GenericEventHandler {
         EntityPlayer player = event.getEntityPlayer();
         int i = getMaxEnchantmentLevel(getEnchantment("undigging"), player);
         if (i > 0) {
-            event.setNewSpeed(event.getOriginalSpeed() / (float)i);
+            event.setNewSpeed(event.getOriginalSpeed() / (float) i);
         }
     }
 

@@ -39,13 +39,11 @@ public abstract class MixinItemStack {
             name = "amount"
     )
     private int modify_amout(int amount) {
-        int i1 = EnchantmentHelper.getEnchantmentLevel(getEnchantment("breaking"), (ItemStack) (Object)this);
+        int i1 = EnchantmentHelper.getEnchantmentLevel(getEnchantment("breaking"), (ItemStack) (Object) this);
         int j1 = 0;
 
-        for (int k = 0; i1 > 0 && k < amount; ++k)
-        {
-            if (EnchantmentDurability.negateDamage((ItemStack) (Object)this, i1, rand))
-            {
+        for (int k = 0; i1 > 0 && k < amount; ++k) {
+            if (EnchantmentDurability.negateDamage((ItemStack) (Object) this, i1, rand)) {
                 j1 += i1;
             }
         }
