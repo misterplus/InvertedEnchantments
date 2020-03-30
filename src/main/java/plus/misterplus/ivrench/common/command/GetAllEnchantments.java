@@ -9,8 +9,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import plus.misterplus.ivrench.InvertedEnchantments;
+
+import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GetAllEnchantments extends CommandBase {
 
@@ -48,5 +54,13 @@ public class GetAllEnchantments extends CommandBase {
             }
         }
         sender.sendMessage(new TextComponentTranslation("ivrench.command.ivrench.usage"));
+    }
+
+    @Override
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos)
+    {
+        List<String> list = new LinkedList<>();
+        list.add("all");
+        return list;
     }
 }
