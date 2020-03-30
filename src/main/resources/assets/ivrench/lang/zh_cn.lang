@@ -33,5 +33,5 @@ itemGroup.ivrench=负魔书
 
 item.ivrench.ivrench_book.name=负魔书
 
-ivrench.command.ivrench.usage=/ivrench all
+ivrench.command.ivrench.usage=用法：/ivrench all
 ivrench.command.ivrench.succeed=全负魔书本已获得

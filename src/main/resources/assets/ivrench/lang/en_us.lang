@@ -33,5 +33,5 @@ itemGroup.ivrench=Ivrench Book
 
 item.ivrench.ivrench_book.name=Ivrench Book
 
-ivrench.command.ivrench.usage=/ivrench all
+ivrench.command.ivrench.usage=Usage: /ivrench all
 ivrench.command.ivrench.succeed=A full Inverted Enchantment Book gived to you.
