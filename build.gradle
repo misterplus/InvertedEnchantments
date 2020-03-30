@@ -53,16 +53,12 @@ processResources {
 }
 
 jar {
-    from configurations.provided.asFileTree.files.collect {
-        zipTree(it)
-    }
     manifest.attributes([
             "FMLCorePlugin": "plus.misterplus.ivrench.core.InvertedEnchantmentsFMLLoadingPlugin",
             "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
             "TweakOrder": 0,
             "FMLCorePluginContainsFMLMod": true,
-            "ForceLoadAsMod": true,
-            "FMLAT": "ivrench_at.cfg"
+            "ForceLoadAsMod": true
     ])
 }
 
