@@ -56,6 +56,7 @@ public class FastRandom extends CommandBase {
 						NBTTagCompound nbttt = new NBTTagCompound();
 						nbttt.setTag("StoredEnchantments", nbt);
 						item.setTagCompound(nbttt);
+						item.setTranslatableName("itemGroup.ivrench");
 						player.addItemStackToInventory(item);
 				return;
 			}
