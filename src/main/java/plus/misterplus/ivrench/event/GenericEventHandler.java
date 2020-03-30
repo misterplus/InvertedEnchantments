@@ -9,12 +9,14 @@ import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
@@ -23,17 +25,22 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import plus.misterplus.ivrench.InvertedEnchantments;
 
 import java.util.List;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
 @Mod.EventBusSubscriber
 public class GenericEventHandler {
+
+    public static boolean DEV_ENV = (Boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+    public static boolean VALID_JAR = true;
+
     @SubscribeEvent
     public static void onPlayerTickEvent(TickEvent.PlayerTickEvent event) {
         World world = event.player.getEntityWorld();
@@ -51,7 +58,7 @@ public class GenericEventHandler {
         }
         int j = getMaxEnchantmentLevel(getEnchantment("self_thorn"), player);
         if (j > 0) {
-            player.attackEntityFrom(DamageSource.GENERIC, j);
+            player.attackEntityFrom(DamageSource.CACTUS, (float)j / 20.0F);
         }
         int k = getMaxEnchantmentLevel(getEnchantment("depth_slower"), player);
         if (k > 0 && (player.isInsideOfMaterial(Material.WATER) || world.getBlockState(new BlockPos(player.posX, player.posY, player.posZ)).getMaterial() == Material.WATER)) {
@@ -96,7 +103,7 @@ public class GenericEventHandler {
         Entity targetEntity = event.getEntity();
         if (arrow instanceof EntityArrow && hurter instanceof EntityLivingBase) {
             EntityLivingBase player = (EntityLivingBase) hurter;
-            int i = getEnchantmentLevel(getEnchantment("powerless"), player.getActiveItemStack());
+            int i = getMaxEnchantmentLevel(getEnchantment("powerless"), player);
             if (i > 0) {
                 event.setAmount((float) (event.getAmount() - (float)i * 0.5D + 0.5D));
             }
@@ -164,5 +171,17 @@ public class GenericEventHandler {
         if (i > 0) {
             event.setNewSpeed(event.getOriginalSpeed() / (float)i);
         }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedIn(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event) {
+        if (!VALID_JAR && !event.player.getEntityWorld().isRemote)
+            event.player.sendMessage(new TextComponentString(String.format("[%s]Your copy of Inverted Enchantments is invalid, the author is not responsible for any bugs that might occur with this build.", InvertedEnchantments.MOD_NAME)));
+    }
+
+    @Mod.EventHandler
+    public static void onInvalidCertificate(FMLFingerprintViolationEvent event) {
+        if (!DEV_ENV)
+            VALID_JAR = false;
     }
 }
