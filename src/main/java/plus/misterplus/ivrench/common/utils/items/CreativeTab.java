@@ -51,7 +51,7 @@ public class CreativeTab extends CreativeTabs  {
 			if((e.getRegistryName().getNamespace().equalsIgnoreCase("ivrench"))){
 				ItemStack ebook = new ItemStack(Items.ENCHANTED_BOOK);
 				ItemEnchantedBook.addEnchantment(ebook, new EnchantmentData(e, e.getMaxLevel()));
-				ebook.setTranslatableName("itemGroup.ivrench");
+				ebook.setTranslatableName("item.ivrench.ivrench_book.name");
 				list.add(ebook);
 			}
 		}
