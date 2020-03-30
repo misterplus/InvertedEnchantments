@@ -5,13 +5,13 @@
   "package": "plus.misterplus.ivrench.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-      "MixinEntityLivingBase",
-      "MixinEntity",
-      "MixinExplosion",
-      "MixinItem",
-      "MixinItemFishingRod",
-      "MixinEntityPlayer",
-      "MixinItemStack",
-      "MixinEntityXPOrb"
+    "MixinEntity",
+    "MixinEntityLivingBase",
+    "MixinEntityPlayer",
+    "MixinEntityXPOrb",
+    "MixinExplosion",
+    "MixinItem",
+    "MixinItemFishingRod",
+    "MixinItemStack"
   ]
 }

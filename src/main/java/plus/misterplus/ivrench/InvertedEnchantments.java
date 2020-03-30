@@ -5,7 +5,9 @@ import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = InvertedEnchantments.MOD_ID, name = InvertedEnchantments.MOD_NAME, version = InvertedEnchantments.VERSION)
+import static net.minecraft.inventory.EntityEquipmentSlot.*;
+
+@Mod(modid = InvertedEnchantments.MOD_ID, name = InvertedEnchantments.MOD_NAME, version = InvertedEnchantments.VERSION, certificateFingerprint = "@FINGERPRINT@")
 public class InvertedEnchantments {
     public static final String MOD_ID = "ivrench";
     public static final String MOD_NAME = "Inverted Enchantments";
@@ -13,5 +15,5 @@ public class InvertedEnchantments {
 
     private static Logger logger = LogManager.getLogger(MOD_NAME);
 
-    public static EntityEquipmentSlot[] aentityequipmentslot = new EntityEquipmentSlot[] {EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET};
+    public static EntityEquipmentSlot[] aentityequipmentslot = new EntityEquipmentSlot[] {HEAD, CHEST, LEGS, FEET};
 }

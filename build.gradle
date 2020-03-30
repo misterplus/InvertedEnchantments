@@ -26,6 +26,8 @@ minecraft {
     runDir = "run"
     mappings = "stable_39"
     coreMod = "plus.misterplus.ivrench.core.InvertedEnchantmentsFMLLoadingPlugin"
+    replace '@FINGERPRINT@', project.findProperty('signSHA1')
+    replaceIn "InvertedEnchantments.java"
 }
 
 repositories {
@@ -53,6 +55,9 @@ processResources {
 }
 
 jar {
+    from configurations.provided.asFileTree.files.collect {
+        zipTree(it)
+    }
     manifest.attributes([
             "FMLCorePlugin": "plus.misterplus.ivrench.core.InvertedEnchantmentsFMLLoadingPlugin",
             "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
@@ -65,3 +70,17 @@ jar {
 mixin {
     add sourceSets.main, "mixins.ivrench.refmap.json"
 }
+
+task signJar(type: SignJar, dependsOn: reobfJar) {
+    onlyIf {
+        project.hasProperty('keyStore')
+    }
+    keyStore = project.findProperty('keyStore')
+    alias = project.findProperty('keyStoreAlias')
+    storePass = project.findProperty('keyStorePass')
+    keyPass = project.findProperty('keyStoreKeyPass')
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
+}
+
+build.dependsOn signJar
