@@ -2,7 +2,7 @@
 {
   "modid": "ivrench",
   "name": "Inverted Enchantments",
-  "description": "A mod that adds somewhat stupid inverted enchantments, just for fun.",
+  "description": "A mod that adds every inverted version of vanilla enchants.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "https://www.curseforge.com/minecraft/mc-mods/inverted-enchantments",
