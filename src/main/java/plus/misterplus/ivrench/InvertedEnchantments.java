@@ -14,7 +14,7 @@ import static net.minecraft.inventory.EntityEquipmentSlot.*;
 public class InvertedEnchantments {
     public static final String MOD_ID = "ivrench";
     public static final String MOD_NAME = "Inverted Enchantments";
-    public static final String VERSION = "1.0.4";
+    public static final String VERSION = "1.0.5";
 
     public final static InvertedEnchantmentsCreativeTab MOD_TAB = new InvertedEnchantmentsCreativeTab();
     public static EntityEquipmentSlot[] aentityequipmentslot = new EntityEquipmentSlot[]{HEAD, CHEST, LEGS, FEET};

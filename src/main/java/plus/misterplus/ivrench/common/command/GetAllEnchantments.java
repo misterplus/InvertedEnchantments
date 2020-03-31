@@ -14,7 +14,6 @@ import net.minecraft.util.text.TextComponentTranslation;
 import plus.misterplus.ivrench.InvertedEnchantments;
 
 import javax.annotation.Nullable;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -57,8 +56,7 @@ public class GetAllEnchantments extends CommandBase {
     }
 
     @Override
-    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos)
-    {
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         List<String> list = new LinkedList<>();
         list.add("all");
         return list;
