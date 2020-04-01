@@ -15,20 +15,17 @@ public class EnchantmentInverted extends Enchantment {
     }
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "enchantment." + (APRIL_FOOLS ? this.fakename : this.name);
     }
 
     @Override
-    public EnchantmentInverted setName(String enchName)
-    {
+    public EnchantmentInverted setName(String enchName) {
         this.name = enchName;
         return this;
     }
 
-    public EnchantmentInverted setFakeName(String originalName)
-    {
+    public EnchantmentInverted setFakeName(String originalName) {
         this.fakename = originalName;
         return this;
     }

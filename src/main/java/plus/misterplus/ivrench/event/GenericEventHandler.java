@@ -104,16 +104,8 @@ public class GenericEventHandler {
             if (i > 0) {
                 event.setAmount((float) (event.getAmount() - (float) i * 0.5D + 0.5D));
             }
-            int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
+            int j = getMaxEnchantmentLevel(getEnchantment("aqua"), player);
             if (j > 0) {
-                if (targetEntity instanceof EntityLivingBase) {
-                    ((EntityLivingBase) targetEntity).knockBack(player, (float) j * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
-                } else {
-                    targetEntity.addVelocity(MathHelper.sin(player.rotationYaw * 0.017453292F) * (float) j * 0.5F, -0.1D, -MathHelper.cos(player.rotationYaw * 0.017453292F) * (float) j * 0.5F);
-                }
-            }
-            int k = getMaxEnchantmentLevel(getEnchantment("aqua"), player);
-            if (k > 0) {
                 targetEntity.extinguish();
             }
         }
@@ -128,6 +120,10 @@ public class GenericEventHandler {
             int i = getMaxEnchantmentLevel(getEnchantment("finity"), player);
             if (i > 0) {
                 player.inventory.clearMatchingItems(Items.ARROW, 0, 9999, null);
+            }
+            int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
+            if (j > 0) {
+                player.knockBack(player, (float) j * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
             }
         }
     }

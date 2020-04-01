@@ -58,7 +58,8 @@ public class GetAllEnchantments extends CommandBase {
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         List<String> list = new LinkedList<>();
-        list.add("all");
+        if (args.length != 1)
+            list.add("all");
         return list;
     }
 }
