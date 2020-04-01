@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentWaterWorker;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentWaterSlower extends Enchantment {
+public class EnchantmentWaterSlower extends EnchantmentInverted {
     public EnchantmentWaterSlower(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.ARMOR_HEAD, slots);
     }

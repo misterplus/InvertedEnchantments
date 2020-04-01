@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentKnockback;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentKnockForward extends Enchantment {
+public class EnchantmentKnockForward extends EnchantmentInverted {
     public EnchantmentKnockForward(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.WEAPON, slots);
     }

@@ -9,9 +9,10 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.MathHelper;
 
+import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
-public class EnchantmentNoProtection extends Enchantment {
+public class EnchantmentNoProtection extends EnchantmentInverted {
     /**
      * Defines the type of protection of the enchantment, 0 = all, 1 = fire, 2 = fall (feather fall), 3 = explosion and
      * 4 = projectile.
@@ -92,7 +93,7 @@ public class EnchantmentNoProtection extends Enchantment {
      * Return the name of key in translation table of this enchantment.
      */
     public String getName() {
-        return "enchantment.noprotect." + this.protectionType.getTypeName();
+        return APRIL_FOOLS ? "enchantment.protect." + this.protectionType.getTypeName() : "enchantment.noprotect." + this.protectionType.getTypeName();
     }
 
     /**

@@ -6,7 +6,7 @@ import net.minecraft.enchantment.EnchantmentUntouching;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentTouching extends Enchantment {
+public class EnchantmentTouching extends EnchantmentInverted {
     public EnchantmentTouching(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.DIGGER, slots);
     }

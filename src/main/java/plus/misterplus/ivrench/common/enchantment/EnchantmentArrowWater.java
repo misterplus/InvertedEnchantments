@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentArrowFire;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentArrowWater extends Enchantment {
+public class EnchantmentArrowWater extends EnchantmentInverted {
     public EnchantmentArrowWater(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.BOW, slots);
     }

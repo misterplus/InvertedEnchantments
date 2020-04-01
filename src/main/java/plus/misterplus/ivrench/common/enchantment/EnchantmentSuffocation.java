@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentOxygen;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentSuffocation extends Enchantment {
+public class EnchantmentSuffocation extends EnchantmentInverted {
     public EnchantmentSuffocation(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.ARMOR_HEAD, slots);
     }

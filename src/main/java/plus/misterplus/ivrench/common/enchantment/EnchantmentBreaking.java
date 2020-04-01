@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentMending;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentBreaking extends Enchantment {
+public class EnchantmentBreaking extends EnchantmentInverted {
     public EnchantmentBreaking(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.BREAKABLE, slots);
     }

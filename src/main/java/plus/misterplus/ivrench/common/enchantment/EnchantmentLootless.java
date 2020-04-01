@@ -6,7 +6,7 @@ import net.minecraft.enchantment.EnchantmentUntouching;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentLootless extends Enchantment {
+public class EnchantmentLootless extends EnchantmentInverted {
     public EnchantmentLootless(Enchantment.Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot... slots) {
         super(rarityIn, typeIn, slots);
     }

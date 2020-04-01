@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentFireAspect;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentSelfFire extends Enchantment {
+public class EnchantmentSelfFire extends EnchantmentInverted {
     public EnchantmentSelfFire(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.WEAPON, slots);
     }

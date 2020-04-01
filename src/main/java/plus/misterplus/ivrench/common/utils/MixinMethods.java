@@ -20,7 +20,7 @@ public class MixinMethods {
     public static void injectDecreaseAirSupply(int air, CallbackInfoReturnable<Integer> cir, Random rand, EntityLivingBase entityLivingBase) {
         int j = getMaxEnchantmentLevel(getEnchantment("suffocation"), entityLivingBase);
         if (j > 0) {
-            cir.setReturnValue(rand.nextInt(j + 1) > 0 ? air - j - 1 : air - 1);
+            cir.setReturnValue(rand.nextInt(j + 1) > 0 ? Math.max(air - j - 1, -20) : air - 1);
         }
     }
 

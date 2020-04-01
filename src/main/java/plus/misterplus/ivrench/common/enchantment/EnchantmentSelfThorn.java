@@ -7,7 +7,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentSelfThorn extends Enchantment {
+public class EnchantmentSelfThorn extends EnchantmentInverted {
     public EnchantmentSelfThorn(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.ARMOR_CHEST, slots);
     }

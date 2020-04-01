@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentSweepingEdge;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentEdgeless extends Enchantment {
+public class EnchantmentEdgeless extends EnchantmentInverted {
     public EnchantmentEdgeless(Enchantment.Rarity p_i47366_1_, EntityEquipmentSlot... p_i47366_2_) {
         super(p_i47366_1_, EnumEnchantmentType.WEAPON, p_i47366_2_);
     }

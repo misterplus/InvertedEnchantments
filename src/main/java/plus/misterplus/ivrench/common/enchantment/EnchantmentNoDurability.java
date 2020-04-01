@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 
 import java.util.Random;
 
-public class EnchantmentNoDurability extends Enchantment {
+public class EnchantmentNoDurability extends EnchantmentInverted {
 
     public EnchantmentNoDurability(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.BREAKABLE, slots);

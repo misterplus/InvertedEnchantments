@@ -12,7 +12,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EnchantmentIceMelter extends Enchantment {
+public class EnchantmentIceMelter extends EnchantmentInverted {
     public EnchantmentIceMelter(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.ARMOR_FEET, slots);
     }
@@ -31,8 +31,7 @@ public class EnchantmentIceMelter extends Enchantment {
                         IBlockState iblockstate1 = worldIn.getBlockState(blockpos$mutableblockpos1);
 
                         if (iblockstate1.getMaterial() == Material.ICE && worldIn.provider.getDimension() != -1) {
-                            worldIn.setBlockState(blockpos$mutableblockpos1, Blocks.WATER.getDefaultState());
-                            worldIn.scheduleUpdate(blockpos$mutableblockpos1.toImmutable(), Blocks.WATER, 1);
+                            worldIn.setBlockState(blockpos$mutableblockpos1, Blocks.FLOWING_WATER.getDefaultState(), 11);
                         }
                     }
                 }

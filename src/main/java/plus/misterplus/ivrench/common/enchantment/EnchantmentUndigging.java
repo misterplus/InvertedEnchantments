@@ -7,7 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
-public class EnchantmentUndigging extends Enchantment {
+public class EnchantmentUndigging extends EnchantmentInverted {
     public EnchantmentUndigging(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.DIGGER, slots);
     }

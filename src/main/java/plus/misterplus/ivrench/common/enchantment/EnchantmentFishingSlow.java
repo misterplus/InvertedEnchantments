@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentFishingSpeed;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentFishingSlow extends Enchantment {
+public class EnchantmentFishingSlow extends EnchantmentInverted {
     public EnchantmentFishingSlow(Enchantment.Rarity rarityIn, EnumEnchantmentType typeIn, EntityEquipmentSlot... slots) {
         super(rarityIn, typeIn, slots);
     }

@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentBindingCurse;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentUnbindingCurse extends Enchantment {
+public class EnchantmentUnbindingCurse extends EnchantmentInverted {
     public EnchantmentUnbindingCurse(Enchantment.Rarity p_i47254_1_, EntityEquipmentSlot... p_i47254_2_) {
         super(p_i47254_1_, EnumEnchantmentType.WEARABLE, p_i47254_2_);
     }

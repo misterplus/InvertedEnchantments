@@ -6,7 +6,7 @@ import net.minecraft.enchantment.EnchantmentWaterWalker;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentWaterTrapper extends Enchantment {
+public class EnchantmentWaterTrapper extends EnchantmentInverted {
     public EnchantmentWaterTrapper(Enchantment.Rarity rarityIn, EntityEquipmentSlot... slots) {
         super(rarityIn, EnumEnchantmentType.ARMOR_FEET, slots);
     }

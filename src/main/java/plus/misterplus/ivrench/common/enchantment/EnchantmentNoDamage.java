@@ -12,7 +12,9 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 
-public class EnchantmentNoDamage extends Enchantment {
+import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
+
+public class EnchantmentNoDamage extends EnchantmentInverted {
     /**
      * None
      */
@@ -78,7 +80,7 @@ public class EnchantmentNoDamage extends Enchantment {
      * Return the name of key in translation table of this enchantment.
      */
     public String getName() {
-        return "enchantment.nodamage." + DAMAGE_NAMES[this.damageType];
+        return APRIL_FOOLS ? "enchantment.damage." + DAMAGE_NAMES[this.damageType] : "enchantment.nodamage." + DAMAGE_NAMES[this.damageType];
     }
 
     /**

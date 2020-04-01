@@ -5,7 +5,7 @@ import net.minecraft.enchantment.EnchantmentVanishingCurse;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.inventory.EntityEquipmentSlot;
 
-public class EnchantmentVanishing extends Enchantment {
+public class EnchantmentVanishing extends EnchantmentInverted {
     public EnchantmentVanishing(Enchantment.Rarity p_i47252_1_, EntityEquipmentSlot... p_i47252_2_) {
         super(p_i47252_1_, EnumEnchantmentType.ALL, p_i47252_2_);
     }
