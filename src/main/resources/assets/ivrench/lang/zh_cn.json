@@ -1,0 +1,38 @@
+{
+  "enchantment.ivrench.suffocation":"水下窒息",
+  "enchantment.ivrench.noprotect.all":"保护不了",
+  "enchantment.ivrench.noprotect.fire":"火焰灼烧",
+  "enchantment.ivrench.noprotect.fall":"摔落骨折",
+  "enchantment.ivrench.noprotect.explosion": "瞬间爆炸",
+  "enchantment.ivrench.noprotect.projectile": "弹射物吸引",
+  "enchantment.ivrench.aqua_allergy": "水下慢掘",
+  "enchantment.ivrench.self_thorn": "负荆请罪",
+  "enchantment.ivrench.depth_slower": "水下走不动",
+  "enchantment.ivrench.ice_melter": "虚空行者",
+  "enchantment.ivrench.unbinding_curse": "绑定不了",
+  "enchantment.ivrench.nodamage.all": "磨钝",
+  "enchantment.ivrench.nodamage.undead": "亡灵加强",
+  "enchantment.ivrench.nodamage.arthropods": "节肢救星",
+  "enchantment.ivrench.knockforward": "退击",
+  "enchantment.ivrench.self_fire":"引火烧身",
+  "enchantment.ivrench.lootLess":"抢夺不到",
+  "enchantment.ivrench.lootLessFishing":"海之嫌弃",
+  "enchantment.ivrench.lootLessDigger":"时运不济",
+  "enchantment.ivrench.edgeless":"竖劈之刃",
+  "enchantment.ivrench.undigging":"挖掘缓慢",
+  "enchantment.ivrench.touching":"精准损坏",
+  "enchantment.ivrench.breaking": "加速磨损",
+  "enchantment.ivrench.powerless": "虚弱",
+  "enchantment.ivrench.self_punch": "后坐力",
+  "enchantment.ivrench.aqua": "水矢",
+  "enchantment.ivrench.finity": "有限",
+  "enchantment.ivrench.lureless": "钩直饵咸",
+  "enchantment.ivrench.unmending": "经验腐蚀",
+  "enchantment.ivrench.vanishing":"立即消失",
+
+  "itemGroup.ivrench":"负魔书",
+
+  "item.ivrench.ivrench_book.name":"负魔书",
+
+  "ivrench.command.ivrench.succeed":"全负魔书本已获得"
+}

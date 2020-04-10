@@ -1,0 +1,38 @@
+{
+  "enchantment.ivrench.suffocation":"Suffocation",
+  "enchantment.ivrench.noprotect.all":"Protectless",
+  "enchantment.ivrench.noprotect.fire":"Fire Amplification",
+  "enchantment.ivrench.noprotect.fall":"Fracture Falling",
+  "enchantment.ivrench.noprotect.explosion": "Blast Enhancement",
+  "enchantment.ivrench.noprotect.projectile": "Projectile Attraction",
+  "enchantment.ivrench.aqua_allergy": "Aqua Allergy",
+  "enchantment.ivrench.self_thorn": "Self Thorns",
+  "enchantment.ivrench.depth_slower": "Depth Slower",
+  "enchantment.ivrench.ice_melter": "Frost Melter",
+  "enchantment.ivrench.unbinding_curse": "Curse of Unbinding",
+  "enchantment.ivrench.nodamage.all": "Bluntness",
+  "enchantment.ivrench.nodamage.undead": "Smiteless",
+  "enchantment.ivrench.nodamage.arthropods": "Blessing of Arthropods",
+  "enchantment.ivrench.knockforward": "Knockforward",
+  "enchantment.ivrench.self_fire":"Fire Respect",
+  "enchantment.ivrench.lootLess":"Lootless",
+  "enchantment.ivrench.lootLessFishing":"Bad Luck of the Sea",
+  "enchantment.ivrench.lootLessDigger":"Misfortune",
+  "enchantment.ivrench.edgeless":"Edgeless",
+  "enchantment.ivrench.undigging":"Ineffciency",
+  "enchantment.ivrench.touching":"Silk Break",
+  "enchantment.ivrench.breaking": "Breaking",
+  "enchantment.ivrench.powerless": "Powerless",
+  "enchantment.ivrench.self_punch": "Recoil",
+  "enchantment.ivrench.aqua": "Aqua",
+  "enchantment.ivrench.finity": "Finity",
+  "enchantment.ivrench.lureless": "Lureless",
+  "enchantment.ivrench.unmending": "Unmending",
+  "enchantment.ivrench.vanishing":"Curse of Instant Vanishing",
+
+  "itemGroup.ivrench":"Inverted Enchantment",
+
+  "item.ivrench.ivrench_book.name":"Inverted Enchantment Book",
+
+  "ivrench.command.ivrench.succeed":"Gave a fully Inverted Enchantment Book to your inventory."
+}
