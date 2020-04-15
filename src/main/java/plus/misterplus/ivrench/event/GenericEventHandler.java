@@ -2,6 +2,7 @@ package plus.misterplus.ivrench.event;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ArrowItem;
@@ -18,25 +19,35 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.item.ItemEvent;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
+import java.util.Random;
 
 import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
 import static plus.misterplus.ivrench.common.utils.EntityPlayerHelper.*;
-import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getCurrentLevelTool;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
+import static plus.misterplus.ivrench.common.utils.ItemsHelper.clearProjectiles;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenericEventHandler {
+
+    @SubscribeEvent
+    public void on(PlayerXpEvent event){
+
+    }
 
     @SubscribeEvent
     public void onArrowLoose(ArrowLooseEvent event) {
@@ -46,7 +57,7 @@ public class GenericEventHandler {
                 int size = player.inventory.getSizeInventory();
                 int i = 0;
                 while (true) {
-                    if (player.inventory.getStackInSlot(i).getItem() instanceof ArrowItem){
+                    if (player.inventory.getStackInSlot(i).getItem() instanceof ArrowItem) {
                         player.inventory.removeStackFromSlot(i);
                     }
                     if (i == size) break;
@@ -79,6 +90,10 @@ public class GenericEventHandler {
         if (k > 0 && isFeetInWater(player)) {
             player.addPotionEffect(new EffectInstance(Effects.SLOWNESS, 1, k - 1, false, false));
         }
+        int l = getMaxEnchantmentLevel(getEnchantment("suffocation"), player);
+        if (l > 0 && isHeadInWater(player)) {
+            tryRemoveAir(player);
+        }
     }
 
     @SubscribeEvent
@@ -93,7 +108,7 @@ public class GenericEventHandler {
     public static void onAttackEntity(AttackEntityEvent event) {
         PlayerEntity player = event.getPlayer();
         Entity targetEntity = event.getEntity();
-        int i = getMaxEnchantmentLevel(getEnchantment("knockforward"), player);
+        int i = getMaxEnchantmentLevel(getEnchantment("knock_forward"), player);
         if (i > 0) {
             if (targetEntity instanceof LivingEntity) {
                 ((LivingEntity) targetEntity).knockBack(player, (float) i * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
@@ -117,7 +132,9 @@ public class GenericEventHandler {
             LivingEntity player = (LivingEntity) hunter;
             int i = getMaxEnchantmentLevel(getEnchantment("powerless"), player);
             if (i > 0) {
-                event.setAmount((float) (event.getAmount() - (float) i * 0.5D + 0.5D));
+                System.out.println(event.getAmount());
+                event.setAmount(Math.max(event.getAmount() - (float) i, 0.5f));
+                System.out.println(event.getAmount());
             }
             int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
             if (j > 0) {
@@ -136,6 +153,7 @@ public class GenericEventHandler {
 
     @SubscribeEvent
     public static void onLivingEntityUseItem(LivingEntityUseItemEvent.Stop event) {
+        ItemStack itemStack = event.getItem();
         Item item = event.getItem().getItem();
         Entity entity = event.getEntity();
         if (item instanceof BowItem || entity instanceof PlayerEntity) {
@@ -143,6 +161,20 @@ public class GenericEventHandler {
             int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
             if (j > 0) {
                 player.knockBack(player, (float) j * 0.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
+            }
+            int k = getMaxEnchantmentLevel(getEnchantment("unishot"), player);
+            if (k > 0) {
+                clearProjectiles(event.getItem());
+            }
+            int i = getMaxEnchantmentLevel(getEnchantment("self_channeling"), player);
+            if (i > 0) {
+                LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(player.getEntityWorld(), player.getPosX(), player.getPosY(), player.getPosZ(), false);
+                lightningBoltEntity.createSpawnPacket();
+            }
+            int m = getMaxEnchantmentLevel(getEnchantment("betray"), player);
+            if (m > 0) {
+                event.setCanceled(true);
+                itemStack.setCount(0);
             }
         }
     }
@@ -152,7 +184,7 @@ public class GenericEventHandler {
         Entity killer = event.getSource().getTrueSource();
         if (killer instanceof LivingEntity) {
             LivingEntity living = (LivingEntity) killer;
-            int i = getMaxEnchantmentLevel(getEnchantment("lootLess"), living);
+            int i = getMaxEnchantmentLevel(getEnchantment("loot_less"), living);
             if (i > 0) {
                 event.setCanceled(living.getEntityWorld().rand.nextInt(i + 1) > 0);
             }
@@ -163,14 +195,15 @@ public class GenericEventHandler {
     public static void onBlockHarvest(BlockEvent.HarvestDropsEvent event) {
         if (event.getHarvester() == null) return;
 
-        int i = getMaxEnchantmentLevel(getEnchantment("lootLessDigger"), event.getHarvester());
+        int i = getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), event.getHarvester());
         if (i > 0) {
             event.setDropChance(1.0F - (float) i / 3.0F);
         }
 
         int j = getMaxEnchantmentLevel(getEnchantment("touching"), event.getHarvester());
-        if (j > 0)
+        if (j > 0) {
             event.setDropChance(0.0F);
+        }
     }
 
     @SubscribeEvent
@@ -181,15 +214,4 @@ public class GenericEventHandler {
             event.setNewSpeed(event.getOriginalSpeed() / (float) i);
         }
     }
-    @SubscribeEvent
-    public void suffocate(EntityEvent event) {
-        if (event.getEntity() instanceof PlayerEntity) {
-            if(isHeadInWater((PlayerEntity) event.getEntity())){
-                tryRemoveAir((PlayerEntity) event.getEntity());
-            }
-        }
-    }
-
-
-
 }

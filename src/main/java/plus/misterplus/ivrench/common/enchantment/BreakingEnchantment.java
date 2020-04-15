@@ -4,6 +4,10 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.MendingEnchantment;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
+
+import java.util.Random;
 
 public class BreakingEnchantment extends InvertedEnchantmentBase {
     public BreakingEnchantment(Enchantment.Rarity rarityIn, EquipmentSlotType... slots) {
@@ -41,4 +45,5 @@ public class BreakingEnchantment extends InvertedEnchantmentBase {
         else
             return super.canApplyTogether(ench);
     }
+
 }

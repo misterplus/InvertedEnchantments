@@ -55,9 +55,8 @@ public class RegistryEventHandler {
         event.getRegistry().registerAll(new SlowChargeEnchantment(UNCOMMON,EquipmentSlotType.values()).setFakeName("quick_charge").setName("slow_charge").setRegistryName("slow_charge"));
         event.getRegistry().registerAll(new UnishotEnchantment(RARE,EquipmentSlotType.values()).setFakeName("multishot").setName("unishot").setRegistryName("unishot"));
         event.getRegistry().registerAll(new SelfChannelingEnchantment(VERY_RARE,EquipmentSlotType.values()).setFakeName("channeling").setName("self_channeling").setRegistryName("self_channeling"));
-        event.getRegistry().registerAll(new BounceEnchantment(RARE,EquipmentSlotType.values()).setFakeName("riptide").setName("bounce").setRegistryName("bounce"));
-        event.getRegistry().registerAll(new DrynessEnchantment(RARE, EquipmentSlotType.values()).setFakeName("impaling").setName("dryness").setRegistryName("dryness"));
+        event.getRegistry().registerAll(new BounceEnchantment(RARE,EquipmentSlotType.values()).setFakeName("impaling").setName("bounce").setRegistryName("bounce"));
+        event.getRegistry().registerAll(new DrynessEnchantment(RARE, EquipmentSlotType.values()).setFakeName("riptide").setName("dryness").setRegistryName("dryness"));
         event.getRegistry().registerAll(new BetrayEnchantment(UNCOMMON,EquipmentSlotType.values()).setFakeName("loyalty").setName("betray").setRegistryName("betray"));
-
     }
 }

@@ -2,15 +2,12 @@ package plus.misterplus.ivrench.common.utils;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import plus.misterplus.ivrench.common.enchantment.SuffocationEnchantment;
 
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getCurrentLevelTool;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
@@ -46,4 +43,5 @@ public class EntityPlayerHelper {
         }
 
     }
+
 }

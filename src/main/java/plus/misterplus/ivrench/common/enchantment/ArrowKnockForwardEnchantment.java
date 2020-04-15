@@ -3,17 +3,7 @@ package plus.misterplus.ivrench.common.enchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.PunchEnchantment;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
-import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
 public class ArrowKnockForwardEnchantment extends InvertedEnchantmentBase {
     public ArrowKnockForwardEnchantment(Enchantment.Rarity rarityIn, EquipmentSlotType... slots) {

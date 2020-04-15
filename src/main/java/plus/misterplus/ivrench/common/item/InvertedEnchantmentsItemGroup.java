@@ -2,13 +2,13 @@ package plus.misterplus.ivrench.common.item;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.item.*;
-
+import net.minecraft.item.EnchantedBookItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import plus.misterplus.ivrench.InvertedEnchantments;
 
 import javax.annotation.Nonnull;

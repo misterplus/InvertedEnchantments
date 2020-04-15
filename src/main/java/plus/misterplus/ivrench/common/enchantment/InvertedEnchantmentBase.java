@@ -7,6 +7,7 @@ import plus.misterplus.ivrench.InvertedEnchantments;
 
 import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
 
+@SuppressWarnings("ALL")
 public class InvertedEnchantmentBase extends Enchantment {
 
     protected String fakename;

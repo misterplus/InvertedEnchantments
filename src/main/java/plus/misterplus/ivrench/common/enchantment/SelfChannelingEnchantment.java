@@ -2,7 +2,6 @@ package plus.misterplus.ivrench.common.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.enchantment.FireAspectEnchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class SelfChannelingEnchantment extends InvertedEnchantmentBase {

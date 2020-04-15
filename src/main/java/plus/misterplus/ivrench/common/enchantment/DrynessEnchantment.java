@@ -1,11 +1,10 @@
 package plus.misterplus.ivrench.common.enchantment;
 
-        import net.minecraft.enchantment.Enchantment;
-        import net.minecraft.enchantment.EnchantmentType;
-        import net.minecraft.enchantment.ImpalingEnchantment;
-        import net.minecraft.enchantment.SweepingEnchantment;
-        import net.minecraft.entity.CreatureAttribute;
-        import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.enchantment.ImpalingEnchantment;
+import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.inventory.EquipmentSlotType;
 
 public class DrynessEnchantment extends InvertedEnchantmentBase {
     public DrynessEnchantment(Enchantment.Rarity p_i47366_1_, EquipmentSlotType... p_i47366_2_) {

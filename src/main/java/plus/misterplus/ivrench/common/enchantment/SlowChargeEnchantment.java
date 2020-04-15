@@ -3,7 +3,6 @@ package plus.misterplus.ivrench.common.enchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.QuickChargeEnchantment;
-import net.minecraft.enchantment.RespirationEnchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class SlowChargeEnchantment extends InvertedEnchantmentBase {

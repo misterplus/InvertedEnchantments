@@ -1,7 +1,6 @@
 package plus.misterplus.ivrench.common.enchantment;
 
 import net.minecraft.enchantment.*;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class BounceEnchantment extends InvertedEnchantmentBase   {
