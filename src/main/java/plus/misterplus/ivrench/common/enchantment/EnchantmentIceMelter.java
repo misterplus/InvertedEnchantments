@@ -30,9 +30,16 @@ public class EnchantmentIceMelter extends EnchantmentInverted {
                     if (iblockstate.getMaterial() == Material.AIR) {
                         IBlockState iblockstate1 = worldIn.getBlockState(blockpos$mutableblockpos1);
 
-                        if ( worldIn.provider.getDimension() != -1 && ( iblockstate1.getMaterial() == Material.ICE || iblockstate1.getMaterial() == Material.PACKED_ICE  )  ) {
-                            worldIn.setBlockState(blockpos$mutableblockpos1, Blocks.FLOWING_WATER.getDefaultState(), 11);
+                        if (iblockstate1.getMaterial() == Material.ICE) {
+                            if( worldIn.provider.getDimension() != -1) {
+                                worldIn.setBlockState(blockpos$mutableblockpos1, Blocks.FLOWING_WATER.getDefaultState(), 11);
+                            } else {
+
+                                //TODO: Need DEBUG
+                                worldIn.setBlockState(blockpos$mutableblockpos1, Blocks.AIR.getDefaultState(), 0);
+                            }
                         }
+
                     }
                 }
             }
