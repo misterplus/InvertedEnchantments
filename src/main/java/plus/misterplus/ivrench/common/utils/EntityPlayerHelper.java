@@ -4,6 +4,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ArrowItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
@@ -35,13 +37,26 @@ public class EntityPlayerHelper {
         }
         return blockState.has(BlockStateProperties.WATERLOGGED) && blockState.get(BlockStateProperties.WATERLOGGED);
     }
+
     public static void tryRemoveAir(PlayerEntity player) {
         ItemStack item = player.inventory.armorItemInSlot(3);
         int level = getCurrentLevelTool(item, getEnchantment("suffocation"));
         if (level != -1) {
             player.setAir(Math.max(player.getAir() - level, -19));
         }
-
     }
+
+    public static void tryRemoveArrow(PlayerEntity player) {
+        int size = player.inventory.getSizeInventory();
+        int i = 0;
+        while (true) {
+            if (player.inventory.getStackInSlot(i).getItem() instanceof ArrowItem) {
+                player.inventory.removeStackFromSlot(i);
+            }
+            if (i == size) break;
+            i++;
+        }
+    }
+
 
 }

@@ -1,6 +1,7 @@
 package plus.misterplus.ivrench.common.enchantment;
 
 import net.minecraft.enchantment.*;
+import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class BounceEnchantment extends InvertedEnchantmentBase   {
@@ -9,21 +10,25 @@ public class BounceEnchantment extends InvertedEnchantmentBase   {
     }
 
     public int getMinEnchantability(int p_77321_1_) {
-        return 10 + p_77321_1_ * 7;
+        return 1 + (p_77321_1_ - 1) * 8;
     }
 
     public int getMaxEnchantability(int p_223551_1_) {
-        return 50;
+        return this.getMinEnchantability(p_223551_1_) + 20;
     }
 
     public int getMaxLevel() {
-        return 3;
+        return 5;
     }
 
     public boolean canApplyTogether(Enchantment ench) {
-        if (ench instanceof RiptideEnchantment || ench instanceof LoyaltyEnchantment ||ench instanceof BetrayEnchantment || ench instanceof ChannelingEnchantment ||ench instanceof SelfChannelingEnchantment )
+        if (ench instanceof ImpalingEnchantment)
             return false;
         else
             return super.canApplyTogether(ench);
+    }
+
+    public float calcDamageByCreature(int p_152376_1_, CreatureAttribute p_152376_2_) {
+        return p_152376_2_ == CreatureAttribute.WATER ? (float) p_152376_1_ * 2.5F : 0.0F;
     }
 }

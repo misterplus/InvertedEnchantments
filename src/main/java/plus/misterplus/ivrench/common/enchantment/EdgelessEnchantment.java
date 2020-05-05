@@ -10,6 +10,9 @@ public class EdgelessEnchantment extends InvertedEnchantmentBase {
         super(p_i47366_1_, EnchantmentType.WEAPON, p_i47366_2_);
     }
 
+
+    //TODO:MIXIN THIS
+
     /**
      * Returns the minimal value of enchantability needed on the enchantment level passed.
      */

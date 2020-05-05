@@ -1,22 +1,19 @@
 package plus.misterplus.ivrench.common.enchantment;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentType;
-import net.minecraft.enchantment.ImpalingEnchantment;
-import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.enchantment.*;
 import net.minecraft.inventory.EquipmentSlotType;
 
 public class DrynessEnchantment extends InvertedEnchantmentBase {
     public DrynessEnchantment(Enchantment.Rarity p_i47366_1_, EquipmentSlotType... p_i47366_2_) {
-        super(p_i47366_1_, EnchantmentType.WEAPON, p_i47366_2_);
+        super(p_i47366_1_, EnchantmentType.TRIDENT, p_i47366_2_);
     }
 
     public int getMinEnchantability(int p_77321_1_) {
-        return 1 + (p_77321_1_ - 1) * 8;
+        return 10 + p_77321_1_ * 7;
     }
 
     public int getMaxEnchantability(int p_223551_1_) {
-        return this.getMinEnchantability(p_223551_1_) + 20;
+        return 50;
     }
 
     public int getMaxLevel() {
@@ -24,13 +21,10 @@ public class DrynessEnchantment extends InvertedEnchantmentBase {
     }
 
     public boolean canApplyTogether(Enchantment ench) {
-        if (ench instanceof ImpalingEnchantment)
+        if (ench instanceof RiptideEnchantment || ench instanceof LoyaltyEnchantment || ench instanceof BetrayEnchantment || ench instanceof ChannelingEnchantment || ench instanceof SelfChannelingEnchantment)
             return false;
         else
             return super.canApplyTogether(ench);
     }
 
-    public float calcDamageByCreature(int p_152376_1_, CreatureAttribute p_152376_2_) {
-        return p_152376_2_ == CreatureAttribute.WATER ? (float)p_152376_1_ * -2.5F : 0.0F;
-    }
 }

@@ -44,19 +44,19 @@ public class RegistryEventHandler {
         event.getRegistry().registerAll(new UndiggingEnchantment(COMMON, MAINHAND).setFakeName("digging").setName("undigging").setRegistryName("undigging"));
         event.getRegistry().registerAll(new TouchingEnchantment(VERY_RARE, MAINHAND).setFakeName("untouching").setName("touching").setRegistryName("touching"));
         event.getRegistry().registerAll(new NoDurabilityEnchantment(UNCOMMON, MAINHAND).setFakeName("durability").setName("breaking").setRegistryName("breaking"));
-        event.getRegistry().registerAll(new ArrowNoDamageEnchantment(COMMON, MAINHAND).setFakeName("arrowDamage").setName("powerless").setRegistryName("powerless"));
-        event.getRegistry().registerAll(new ArrowKnockForwardEnchantment(RARE, MAINHAND).setFakeName("arrowKnockback").setName("self_punch").setRegistryName("self_punch"));
-        event.getRegistry().registerAll(new ArrowWaterEnchantment(RARE, MAINHAND).setFakeName("arrowFire").setName("aqua").setRegistryName("aqua"));
-        event.getRegistry().registerAll(new ArrowFiniteEnchantment(VERY_RARE, MAINHAND).setFakeName("arrowInfinite").setName("finity").setRegistryName("finity"));
-        event.getRegistry().registerAll(new FishingSlowEnchantment(RARE, FISHING_ROD, MAINHAND).setFakeName("lootBonusFishing").setName("lureless").setRegistryName("lureless"));
+        event.getRegistry().registerAll(new ArrowNoDamageEnchantment(COMMON, MAINHAND).setFakeName("power").setName("powerless").setRegistryName("powerless"));
+        event.getRegistry().registerAll(new ArrowKnockForwardEnchantment(RARE, MAINHAND).setFakeName("punch").setName("self_punch").setRegistryName("self_punch"));
+        event.getRegistry().registerAll(new ArrowWaterEnchantment(RARE, MAINHAND).setFakeName("flame").setName("aqua").setRegistryName("aqua"));
+        event.getRegistry().registerAll(new ArrowFiniteEnchantment(VERY_RARE, MAINHAND).setFakeName("infinite").setName("finity").setRegistryName("finity"));
+        event.getRegistry().registerAll(new FishingFailEnchantment(RARE, FISHING_ROD, MAINHAND).setFakeName("lure").setName("lureless").setRegistryName("lureless"));
         event.getRegistry().registerAll(new BreakingEnchantment(RARE, EquipmentSlotType.values()).setFakeName("mending").setName("unmending").setRegistryName("unmending"));
         event.getRegistry().registerAll(new VanishingEnchantment(VERY_RARE, EquipmentSlotType.values()).setFakeName("vanishing_curse").setName("vanishing").setRegistryName("vanishing"));
-        event.getRegistry().registerAll(new NoPiercingEnchantment(COMMON ,EquipmentSlotType.values()).setFakeName("piercing").setName("unpiercing").setRegistryName("unpiercing"));
-        event.getRegistry().registerAll(new SlowChargeEnchantment(UNCOMMON,EquipmentSlotType.values()).setFakeName("quick_charge").setName("slow_charge").setRegistryName("slow_charge"));
-        event.getRegistry().registerAll(new UnishotEnchantment(RARE,EquipmentSlotType.values()).setFakeName("multishot").setName("unishot").setRegistryName("unishot"));
-        event.getRegistry().registerAll(new SelfChannelingEnchantment(VERY_RARE,EquipmentSlotType.values()).setFakeName("channeling").setName("self_channeling").setRegistryName("self_channeling"));
-        event.getRegistry().registerAll(new BounceEnchantment(RARE,EquipmentSlotType.values()).setFakeName("impaling").setName("bounce").setRegistryName("bounce"));
+        event.getRegistry().registerAll(new NoPiercingEnchantment(COMMON, EquipmentSlotType.values()).setFakeName("piercing").setName("unpiercing").setRegistryName("unpiercing"));
+        event.getRegistry().registerAll(new SlowChargeEnchantment(UNCOMMON, EquipmentSlotType.values()).setFakeName("quick_charge").setName("slow_charge").setRegistryName("slow_charge"));
+        event.getRegistry().registerAll(new UnishotEnchantment(RARE, EquipmentSlotType.values()).setFakeName("multishot").setName("unishot").setRegistryName("unishot"));
+        event.getRegistry().registerAll(new SelfChannelingEnchantment(VERY_RARE, EquipmentSlotType.values()).setFakeName("channeling").setName("self_channeling").setRegistryName("self_channeling"));
+        event.getRegistry().registerAll(new BounceEnchantment(RARE, EquipmentSlotType.values()).setFakeName("impaling").setName("bounce").setRegistryName("bounce"));
         event.getRegistry().registerAll(new DrynessEnchantment(RARE, EquipmentSlotType.values()).setFakeName("riptide").setName("dryness").setRegistryName("dryness"));
-        event.getRegistry().registerAll(new BetrayEnchantment(UNCOMMON,EquipmentSlotType.values()).setFakeName("loyalty").setName("betray").setRegistryName("betray"));
+        event.getRegistry().registerAll(new BetrayEnchantment(UNCOMMON, EquipmentSlotType.values()).setFakeName("loyalty").setName("betray").setRegistryName("betray"));
     }
 }

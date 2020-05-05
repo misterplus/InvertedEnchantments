@@ -14,6 +14,7 @@ public class BreakingEnchantment extends InvertedEnchantmentBase {
         super(rarityIn, EnchantmentType.BREAKABLE, slots);
     }
 
+    // TODO: Breaking Mixin Hook
     /**
      * Returns the minimal value of enchantability needed on the enchantment level passed.
      */

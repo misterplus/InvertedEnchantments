@@ -1,11 +1,13 @@
 package plus.misterplus.ivrench.event;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.LightningBoltEntity;
+import net.minecraft.entity.item.TNTEntity;
+import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.item.ArrowItem;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,17 +20,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.event.entity.item.ItemExpireEvent;
-import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.ItemFishedEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -45,24 +42,25 @@ import static plus.misterplus.ivrench.common.utils.ItemsHelper.clearProjectiles;
 public class GenericEventHandler {
 
     @SubscribeEvent
-    public void on(PlayerXpEvent event){
-
-    }
-
-    @SubscribeEvent
-    public void onArrowLoose(ArrowLooseEvent event) {
-        if (event.getWorld().isRemote()) {
-            if (event.getEntity() instanceof PlayerEntity) {
-                PlayerEntity player = (PlayerEntity) event.getEntity();
-                int size = player.inventory.getSizeInventory();
-                int i = 0;
-                while (true) {
-                    if (player.inventory.getStackInSlot(i).getItem() instanceof ArrowItem) {
-                        player.inventory.removeStackFromSlot(i);
-                    }
-                    if (i == size) break;
-                    i++;
-                }
+    public static void onPlayerFishing(ItemFishedEvent event) {
+        LivingEntity player = event.getEntityLiving();
+        int a = getMaxEnchantmentLevel(getEnchantment("lureless"), player);
+        if (a > 0) {
+            Random r = new Random();
+            if (r.nextInt(a) >= 1) {
+                Entity fish = new CodEntity(EntityType.COD, event.getHookEntity().getEntityWorld());
+                fish.setPosition(event.getHookEntity().getPosX(), event.getHookEntity().getPosY(), event.getHookEntity().getPosZ());
+                event.getHookEntity().getEntityWorld().addEntity(fish);
+                event.setCanceled(true);
+            }
+        }
+        int b = getMaxEnchantmentLevel(getEnchantment("loot_less_fishing"), player);
+        if (b > 0) {
+            Random r = new Random();
+            if (r.nextInt(b) >= 1) {
+                Entity tnt = new TNTEntity(event.getHookEntity().getEntityWorld(), event.getHookEntity().getPosX(), event.getHookEntity().getPosY(), event.getHookEntity().getPosZ(), event.getEntityLiving());
+                event.getHookEntity().getEntityWorld().addEntity(tnt);
+                event.setCanceled(true);
             }
         }
     }
@@ -121,6 +119,7 @@ public class GenericEventHandler {
         if (j > 0) {
             player.setFire(j);
         }
+
     }
 
     @SubscribeEvent
@@ -148,6 +147,17 @@ public class GenericEventHandler {
             if (k > 0) {
                 targetEntity.extinguish();
             }
+
+        }
+        if (hunter instanceof LivingEntity) {
+            LivingEntity player = (LivingEntity) hunter;
+            int l = getMaxEnchantmentLevel(getEnchantment("bounce"), player);
+            System.out.println(l);
+            if (l > 0) {
+                player.attackEntityFrom(DamageSource.MAGIC, (float) (event.getAmount() * l * 0.5));
+                event.setAmount(0);
+            }
+
         }
     }
 
@@ -176,6 +186,19 @@ public class GenericEventHandler {
                 event.setCanceled(true);
                 itemStack.setCount(0);
             }
+            int n = getMaxEnchantmentLevel(getEnchantment("finity"), player);
+            if (n > 0) {
+                tryRemoveArrow(player);
+            }
+            int o = getMaxEnchantmentLevel(getEnchantment("dryness"), player);
+            if (o > 0) {
+                if (player.getEntityWorld().isRaining() || player.isInWater()) {
+                    player.getEntityWorld().getWorldInfo().setRaining(false);
+                    player.knockBack(player, (float) o * 2.5F, -MathHelper.sin(player.rotationYaw * 0.017453292F), MathHelper.cos(player.rotationYaw * 0.017453292F));
+                }
+                event.setCanceled(true);
+            }
+
         }
     }
 

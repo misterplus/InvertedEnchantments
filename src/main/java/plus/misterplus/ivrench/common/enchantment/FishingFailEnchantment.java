@@ -5,8 +5,8 @@ import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.LureEnchantment;
 import net.minecraft.inventory.EquipmentSlotType;
 
-public class FishingSlowEnchantment extends InvertedEnchantmentBase {
-    public FishingSlowEnchantment(Enchantment.Rarity rarityIn, EnchantmentType typeIn, EquipmentSlotType... slots) {
+public class FishingFailEnchantment extends InvertedEnchantmentBase {
+    public FishingFailEnchantment(Enchantment.Rarity rarityIn, EnchantmentType typeIn, EquipmentSlotType... slots) {
         super(rarityIn, typeIn, slots);
     }
 
