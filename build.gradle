@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        maven { url = 'https://crystal.app.lss233.com/repositories/minecraft' }
+        maven { url = 'https://files.minecraftforge.net/maven' }
         jcenter()
         mavenCentral()
         maven { url='https://dist.creeper.host/Sponge/maven' }
