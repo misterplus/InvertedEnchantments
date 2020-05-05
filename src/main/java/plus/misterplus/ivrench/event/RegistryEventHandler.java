@@ -21,6 +21,8 @@ public class RegistryEventHandler {
 
     @SubscribeEvent
     public static void onEnchantmentRegistration(final RegistryEvent.Register<Enchantment> event) {
+
+        //TODO: Fix fake name to new version
         event.getRegistry().registerAll(new SuffocationEnchantment(RARE, aEquipmentSlotType).setFakeName("oxygen").setName("suffocation").setRegistryName("suffocation"));
         event.getRegistry().registerAll(new NoProtectionEnchantment(COMMON, ALL, aEquipmentSlotType).setRegistryName("noprotection"));
         event.getRegistry().registerAll(new NoProtectionEnchantment(UNCOMMON, FIRE, aEquipmentSlotType).setRegistryName("fire_noprotection"));
