@@ -11,8 +11,6 @@ public class EdgelessEnchantment extends InvertedEnchantmentBase {
     }
 
 
-    //TODO:MIXIN THIS
-
     /**
      * Returns the minimal value of enchantability needed on the enchantment level passed.
      */
