@@ -46,7 +46,7 @@ public class RegistryEventHandler {
         event.getRegistry().registerAll(new EnchantmentArrowKnockForward(RARE, MAINHAND).setFakeName("arrowKnockback").setName("self_punch").setRegistryName("self_punch"));
         event.getRegistry().registerAll(new EnchantmentArrowWater(RARE, MAINHAND).setFakeName("arrowFire").setName("aqua").setRegistryName("aqua"));
         event.getRegistry().registerAll(new EnchantmentArrowFinite(VERY_RARE, MAINHAND).setFakeName("arrowInfinite").setName("finity").setRegistryName("finity"));
-        event.getRegistry().registerAll(new EnchantmentFishingSlow(RARE, FISHING_ROD, MAINHAND).setFakeName("lootBonusFishing").setName("lureless").setRegistryName("lureless"));
+        event.getRegistry().registerAll(new EnchantmentFishingSlow(RARE, FISHING_ROD, MAINHAND).setFakeName("fishingSpeed").setName("lureless").setRegistryName("lureless"));
         event.getRegistry().registerAll(new EnchantmentBreaking(RARE, EntityEquipmentSlot.values()).setFakeName("mending").setName("unmending").setRegistryName("unmending"));
         event.getRegistry().registerAll(new EnchantmentVanishing(VERY_RARE, EntityEquipmentSlot.values()).setFakeName("vanishing_curse").setName("vanishing").setRegistryName("vanishing"));
     }
