@@ -8,11 +8,15 @@ public class ConfigManager {
 
     public static class Common {
         public final BooleanValue forceAprilFools;
+        public final BooleanValue waterRemove;
 
         public Common(ForgeConfigSpec.Builder builder) {
             forceAprilFools = builder
-                    .comment("Force Enable April Fools?")
+                    .comment("Force Enable April Fools")
                     .define("forceAprilFools.enabled", false);
+            waterRemove = builder
+                    .comment("Allow Frost Melter break Packed Ice ,Blue Ice and Water Source")
+                    .define("waterRemove.enabled", false);
         }
     }
 

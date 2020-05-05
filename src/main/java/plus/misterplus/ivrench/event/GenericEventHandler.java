@@ -152,7 +152,6 @@ public class GenericEventHandler {
         if (hunter instanceof LivingEntity) {
             LivingEntity player = (LivingEntity) hunter;
             int l = getMaxEnchantmentLevel(getEnchantment("bounce"), player);
-            System.out.println(l);
             if (l > 0) {
                 player.attackEntityFrom(DamageSource.MAGIC, (float) (event.getAmount() * l * 0.5));
                 event.setAmount(0);

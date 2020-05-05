@@ -3,6 +3,14 @@
   "package": "plus.misterplus.ivrench.mixins",
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.ivrench.refmap.json",
-  "mixins": [ ],
+  "mixins": [
+    "MixinEntityPlayer",
+    "MixinExperienceOrbEntity",
+    "MixinExplosion",
+    "MixinItem",
+    "MixinItemArmor",
+    "MixinItemStack",
+    "MixinLivingEntity"
+  ],
   "minVersion": "0.8"
 }
