@@ -27,8 +27,16 @@
   "enchantment.ivrench.aqua": "Aqua",
   "enchantment.ivrench.finity": "Finity",
   "enchantment.ivrench.lureless": "Lureless",
-  "enchantment.ivrench.unmending": "Unmending",
+  "enchantment.ivrench.unmending": "UnMending",
   "enchantment.ivrench.vanishing":"Curse of Instant Vanishing",
+  "enchantment.ivrench.unpiercing":"UnPiercing",
+  "enchantment.ivrench.slow_charge":"Slow Charge",
+  "enchantment.ivrench.unishot":"Unishot",
+  "enchantment.ivrench.self_channeling":"Self Channeling",
+  "enchantment.ivrench.bounce":"Bounce",
+  "enchantment.ivrench.dryness":"Dryness",
+  "enchantment.ivrench.betray":"Betray",
+
 
   "itemGroup.ivrench":"Inverted Enchantment",
 

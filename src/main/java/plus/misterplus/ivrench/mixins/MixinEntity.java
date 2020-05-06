@@ -16,9 +16,9 @@ public abstract class MixinEntity {
                     value = "INVOKE_ASSIGN",
                     target = "Lnet/minecraft/enchantment/ProtectionEnchantment;getFireTimeForEntity(Lnet/minecraft/entity/LivingEntity;I)I"
             ),
-            name = "i"
+            name = "p_70015_1_"
     )
-    private int modify_i(int i) {
-        return NoProtectionEnchantment.getFireTimeForEntity((LivingEntity) (Object) this, i);
+    private int modify_i(int p_70015_1_) {
+        return NoProtectionEnchantment.getFireTimeForEntity((LivingEntity) (Object) this, p_70015_1_);
     }
 }

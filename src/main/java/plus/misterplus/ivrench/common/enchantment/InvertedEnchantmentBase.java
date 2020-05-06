@@ -19,7 +19,7 @@ public class InvertedEnchantmentBase extends Enchantment {
 
     @Override
     public String getName() {
-        return "enchantment." + InvertedEnchantments.MOD_ID + "." + (APRIL_FOOLS ? this.fakename : this.name);
+        return APRIL_FOOLS ?  "enchantment.minecraft." + this.fakename : "enchantment." + InvertedEnchantments.MOD_ID + "." + this.name ;
     }
 
     public InvertedEnchantmentBase setName(String enchName) {

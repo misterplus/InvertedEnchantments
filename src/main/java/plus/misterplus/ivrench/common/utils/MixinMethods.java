@@ -2,7 +2,8 @@ package plus.misterplus.ivrench.common.utils;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.FishingBobberEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +11,8 @@ import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import plus.misterplus.ivrench.common.enchantment.IceMelterEnchantment;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
+import java.util.Map;
+
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
 public class MixinMethods {
@@ -28,5 +30,21 @@ public class MixinMethods {
             IceMelterEnchantment.freezeNearby(entityLivingBase, entityLivingBase.world, pos, j);
         }
     }
+    public static int injectOnCollideWithPlayer(PlayerEntity entityIn, int xpValue){
+        Map.Entry<EquipmentSlotType, ItemStack> entry = EnchantmentHelper.getRandomItemWithEnchantment(getEnchantment("unmending"), entityIn);
 
+        if (entry != null) {
+            ItemStack itemstack = entry.getValue();
+            if (!itemstack.isEmpty()) {
+                int i = Math.min((int)((float)xpValue * itemstack.getXpRepairRatio()), itemstack.getDamage());
+                if (itemstack.getDamage() + i > itemstack.getMaxDamage()) {
+                    itemstack.setCount(0);
+                } else{
+                    itemstack.setDamage(itemstack.getDamage() + (i == 0 ? 1 : i));
+                }
+                return i/2;
+            }
+        }
+    return 0;
+    }
 }

@@ -48,5 +48,5 @@ public class InvertedEnchantments {
     public static Logger getLogger() {
         return logger;
     }
-    //TODO: ALL type noprotect, unbinding curse , vanishing, unmending , touching, breaking, loot_less_digger,all 1.13+ new enchantment
+    //TODO: ALL type noprotect, loot_less_digger,all 1.13+ new enchantment
 }

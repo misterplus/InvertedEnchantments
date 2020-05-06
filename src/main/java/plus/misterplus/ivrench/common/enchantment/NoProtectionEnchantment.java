@@ -93,7 +93,19 @@ public class NoProtectionEnchantment extends InvertedEnchantmentBase {
      * Return the name of key in translation table of this enchantment.
      */
     public String getName() {
-        return APRIL_FOOLS ? "enchantment.minecraft.protect." + this.protectionType.name().toLowerCase() : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+        switch (this.protectionType.name().toLowerCase()) {
+            case "all" :
+                return APRIL_FOOLS ? "enchantment.minecraft.protection" : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+            case "fire" :
+                return APRIL_FOOLS ? "enchantment.minecraft.fire_protection"  : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+            case "fall" :
+                return APRIL_FOOLS ? "enchantment.minecraft.feather_falling" : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+            case "explosion" :
+                return APRIL_FOOLS ? "enchantment.minecraft.blast_protection" : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+            case "projectile" :
+                return APRIL_FOOLS ? "enchantment.minecraft.projectile_protection" : "enchantment.ivrench.noprotect." + this.protectionType.name().toLowerCase();
+        }
+        return "enchantment.unknown";
     }
 
     /**

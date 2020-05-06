@@ -80,7 +80,15 @@ public class NoDamageEnchantment extends InvertedEnchantmentBase {
      * Return the name of key in translation table of this enchantment.
      */
     public String getName() {
-        return APRIL_FOOLS ? "enchantment.minecraft.damage." + DAMAGE_NAMES[this.damageType] : "enchantment.ivrench.nodamage." + DAMAGE_NAMES[this.damageType];
+        switch (DAMAGE_NAMES[this.damageType]) {
+            case "all" :
+                return APRIL_FOOLS ? "enchantment.minecraft.sharpness" : "enchantment.ivrench.nodamage." + DAMAGE_NAMES[this.damageType];
+            case "undead" :
+                return APRIL_FOOLS ? "enchantment.minecraft.smite"  : "enchantment.ivrench.nodamage." + DAMAGE_NAMES[this.damageType];
+            case "arthropods" :
+                return APRIL_FOOLS ? "enchantment.minecraft.bane_of_arthropods" : "enchantment.ivrench.nodamage." + DAMAGE_NAMES[this.damageType];
+        }
+        return "enchantment.unknown";
     }
 
     /**

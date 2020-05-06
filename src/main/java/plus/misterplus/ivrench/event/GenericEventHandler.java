@@ -1,5 +1,7 @@
 package plus.misterplus.ivrench.event;
 
+import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -7,10 +9,12 @@ import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -29,10 +33,12 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.List;
 import java.util.Random;
 
+import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
 import static plus.misterplus.ivrench.common.utils.EntityPlayerHelper.*;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
@@ -212,9 +218,22 @@ public class GenericEventHandler {
             }
         }
     }
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        PlayerEntity player = event.getPlayer();
+        System.out.println("Hook1");
+        int j = getMaxEnchantmentLevel(getEnchantment("touching"), player);
+        if (j > 0) {
+            event.setCanceled(true);
+            event.getWorld().setBlockState(event.getPos(), Blocks.AIR.getDefaultState() , 11);
+            player.getHeldItemMainhand().attemptDamageItem(1, new Random(), (ServerPlayerEntity) player);
+        }
+
+    }
 
     @SubscribeEvent
     public static void onBlockHarvest(BlockEvent.HarvestDropsEvent event) {
+        System.out.println("Hook2");
         if (event.getHarvester() == null) return;
 
         int i = getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), event.getHarvester());
@@ -224,6 +243,7 @@ public class GenericEventHandler {
 
         int j = getMaxEnchantmentLevel(getEnchantment("touching"), event.getHarvester());
         if (j > 0) {
+            System.out.println("Hook");
             event.setDropChance(0.0F);
         }
     }

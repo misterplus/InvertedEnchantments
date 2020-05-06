@@ -15,20 +15,31 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import plus.misterplus.ivrench.InvertedEnchantments;
 
+import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
+
 public class MainCommand {
 
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
         LiteralArgumentBuilder<CommandSource> builder = Commands.literal(InvertedEnchantments.MOD_ID);
+
         builder.then(Commands
                 .literal("all")
                 .requires(ctx -> ctx.hasPermissionLevel(4))
                 .executes(ctx -> getAll(ctx.getSource()))
         );
+
         builder.then(Commands
                 .literal("debug")
                 .requires(ctx -> ctx.hasPermissionLevel(4))
                 .executes(ctx -> debug(ctx.getSource()))
         );
+
+        builder.then(Commands
+                        .literal("april")
+                        .requires(ctx -> ctx.hasPermissionLevel(4))
+                        .executes(ctx ->  switchApril(ctx.getSource()))
+        );
+
         dispatcher.register(builder);
     }
 
@@ -44,6 +55,13 @@ public class MainCommand {
         player.addItemStackToInventory(item);
         source.sendFeedback(new TranslationTextComponent("ivrench.command.ivrench.succeed"), true);
 
+        return 1;
+    }
+
+    private static int switchApril(CommandSource source){
+        PlayerEntity player = (PlayerEntity) source.getEntity();
+        APRIL_FOOLS = !APRIL_FOOLS;
+        player.sendMessage(new StringTextComponent(String.valueOf(APRIL_FOOLS)));
         return 1;
     }
 
@@ -65,7 +83,6 @@ public class MainCommand {
         StringTextComponent debugmsg = new StringTextComponent(debugstr);
         player.sendMessage(debugmsg);
         InvertedEnchantments.getLogger().debug(debugstr);
-
         return 1;
     }
 }

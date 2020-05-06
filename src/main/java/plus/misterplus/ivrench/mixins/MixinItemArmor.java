@@ -1,5 +1,6 @@
 package plus.misterplus.ivrench.mixins;
 
+import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ItemStack;
@@ -17,16 +18,17 @@ import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.get
 
 @Mixin(ArmorItem.class)
 public abstract class MixinItemArmor {
-//    @Inject(
-//            method = "dispenseArmor",
-//            at = @At("HEAD"),
-//            cancellable = true
-//    )
-//    private static void injectDispenseArmor(IBlockSource blockSource, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
-//        if (getEnchantmentLevel(getEnchantment("unbinding_curse"), stack) > 0) {
-//            cir.setReturnValue(ItemStack.EMPTY);
-//        }
-//    }
+
+    @Inject(
+            method = "func_226626_a_",
+            at = @At("HEAD"),
+            cancellable = true
+    )
+    private static void injectDispenseArmor(IBlockSource blockSource, ItemStack stack, CallbackInfoReturnable<ItemStack> cir) {
+        if (getEnchantmentLevel(getEnchantment("unbinding_curse"), stack) > 0) {
+            cir.setReturnValue(ItemStack.EMPTY);
+        }
+    }
 
     @Inject(
             method = "onItemRightClick",

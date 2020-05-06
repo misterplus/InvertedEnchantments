@@ -36,19 +36,19 @@ public abstract class MixinItemStack {
                     value = "INVOKE_ASSIGN",
                     target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I"
             ),
-            name = "amount"
+            name = "p_96631_1_"
     )
-    private int modify_amout(int amount) {
+    private int modify_amout(int p_96631_1_) {
         int i1 = EnchantmentHelper.getEnchantmentLevel(getEnchantment("breaking"), (ItemStack) (Object) this);
         int j1 = 0;
 
-        for (int k = 0; i1 > 0 && k < amount; ++k) {
+        for (int k = 0; i1 > 0 && k < p_96631_1_; ++k) {
             if (UnbreakingEnchantment.negateDamage((ItemStack) (Object) this, i1, rand)) {
                 j1 += i1;
             }
         }
 
-        amount += j1;
-        return amount;
+        p_96631_1_ += j1;
+        return p_96631_1_;
     }
 }

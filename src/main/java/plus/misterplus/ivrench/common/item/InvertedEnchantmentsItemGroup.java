@@ -13,6 +13,8 @@ import plus.misterplus.ivrench.InvertedEnchantments;
 
 import javax.annotation.Nonnull;
 
+import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
+
 
 public class InvertedEnchantmentsItemGroup extends ItemGroup {
 
@@ -31,7 +33,7 @@ public class InvertedEnchantmentsItemGroup extends ItemGroup {
             if ((InvertedEnchantments.MOD_ID.equals(e.getRegistryName().getNamespace()))) {
                 ItemStack ebook = new ItemStack(Items.ENCHANTED_BOOK);
                 EnchantedBookItem.addEnchantment(ebook, new EnchantmentData(e, e.getMaxLevel()));
-                ebook.setDisplayName(new TranslationTextComponent("item.ivrench.ivrench_book.name" ));
+                ebook.setDisplayName(new TranslationTextComponent(APRIL_FOOLS ? "item.minecraft.enchanted_book" : "item.ivrench.ivrench_book.name" ));
                 list.add(ebook);
             }
         }

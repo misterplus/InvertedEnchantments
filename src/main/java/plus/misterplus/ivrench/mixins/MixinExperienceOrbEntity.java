@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import plus.misterplus.ivrench.common.utils.MixinMethods;
 
 import java.util.Map;
 
@@ -35,17 +36,6 @@ public abstract class MixinExperienceOrbEntity {
             )
     )
     private void injectOnCollideWithPlayer(PlayerEntity entityIn, CallbackInfo ci) {
-        Map.Entry<EquipmentSlotType, ItemStack> entry = EnchantmentHelper.getRandomItemWithEnchantment(getEnchantment("unmending"), entityIn);
-
-        if (entry != null) {
-            ItemStack itemstack = (ItemStack)entry.getValue();
-            if (!itemstack.isEmpty() && itemstack.isDamaged()) {
-                int i = Math.min((int)((float)this.xpValue * itemstack.getXpRepairRatio()), itemstack.getDamage());
-                this.xpValue -= i / 2;
-                itemstack.setDamage(itemstack.getDamage() - i);
-            }
-        }
-
-
+        this.xpValue =  MixinMethods.injectOnCollideWithPlayer(entityIn,this.xpValue);
     }
 }
