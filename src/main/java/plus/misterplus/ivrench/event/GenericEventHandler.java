@@ -1,7 +1,6 @@
 package plus.misterplus.ivrench.event;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -10,20 +9,20 @@ import net.minecraft.entity.item.TNTEntity;
 import net.minecraft.entity.passive.fish.CodEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -33,13 +32,12 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.List;
 import java.util.Random;
 
-import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel;
+import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
 import static plus.misterplus.ivrench.common.utils.EntityPlayerHelper.*;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 import static plus.misterplus.ivrench.common.utils.ItemsHelper.clearProjectiles;
@@ -72,19 +70,34 @@ public class GenericEventHandler {
     }
 
     @SubscribeEvent
+    public static void onArrowImpactEvent(ProjectileImpactEvent event) {
+        if (event.getEntity().getTags().contains("ivrench_fake_arrow") && event.getRayTraceResult().getType() == RayTraceResult.Type.ENTITY) {
+            System.out.println(((EntityRayTraceResult) event.getRayTraceResult()).getEntity().hurtResistantTime = 20);
+        }
+    }
+
+    @SubscribeEvent
     public static void onPlayerTickEvent(TickEvent.PlayerTickEvent event) {
         World world = event.player.getEntityWorld();
         PlayerEntity player = event.player;
         int i = getMaxEnchantmentLevel(getEnchantment("projectile_noprotection"), player);
         if (i > 0) {
+            i = i + 3;
             BlockPos pos = new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ());
             BlockPos pos1 = pos.offset(Direction.UP).offset(Direction.WEST, i).offset(Direction.NORTH, i);
             BlockPos pos2 = pos.offset(Direction.DOWN).offset(Direction.EAST, i).offset(Direction.SOUTH, i);
-            //Only works with arrows for now
-            List<ArrowEntity> list = world.getEntitiesWithinAABB(ArrowEntity.class, new AxisAlignedBB(pos1, pos2));
-            for (ArrowEntity arrow : list) {
-                arrow.setPosition(player.getPosX(), player.getPosY(), player.getPosZ());
+            List<AbstractArrowEntity> list = world.getEntitiesWithinAABB(AbstractArrowEntity.class, new AxisAlignedBB(pos1, pos2));
+            for (AbstractArrowEntity arrow : list) {
+                arrow.setVelocity(player.getPosX() - arrow.getPosX(), player.getPosYEye() - arrow.getPosY(), player.getPosZ() - arrow.getPosZ());
+                if (APRIL_FOOLS) player.hurtResistantTime = 0;
             }
+
+            List<ProjectileItemEntity> list2 = world.getEntitiesWithinAABB(ProjectileItemEntity.class, new AxisAlignedBB(pos1, pos2));
+            for (ProjectileItemEntity projectile : list2) {
+                projectile.setVelocity(player.getPosX() - projectile.getPosX(), player.getPosYEye() - projectile.getPosY(), player.getPosZ() - projectile.getPosZ());
+            }
+
+
         }
         int j = getMaxEnchantmentLevel(getEnchantment("self_thorn"), player);
         if (j > 0) {
@@ -179,7 +192,9 @@ public class GenericEventHandler {
             }
             int k = getMaxEnchantmentLevel(getEnchantment("unishot"), player);
             if (k > 0) {
+                System.out.println(event.getItem());
                 clearProjectiles(event.getItem());
+                event.setCanceled(true);
             }
             int i = getMaxEnchantmentLevel(getEnchantment("self_channeling"), player);
             if (i > 0) {
@@ -221,7 +236,6 @@ public class GenericEventHandler {
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         PlayerEntity player = event.getPlayer();
-        System.out.println("Hook1");
         int j = getMaxEnchantmentLevel(getEnchantment("touching"), player);
         if (j > 0) {
             event.setCanceled(true);
@@ -229,23 +243,6 @@ public class GenericEventHandler {
             player.getHeldItemMainhand().attemptDamageItem(1, new Random(), (ServerPlayerEntity) player);
         }
 
-    }
-
-    @SubscribeEvent
-    public static void onBlockHarvest(BlockEvent.HarvestDropsEvent event) {
-        System.out.println("Hook2");
-        if (event.getHarvester() == null) return;
-
-        int i = getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), event.getHarvester());
-        if (i > 0) {
-            event.setDropChance(1.0F - (float) i / 3.0F);
-        }
-
-        int j = getMaxEnchantmentLevel(getEnchantment("touching"), event.getHarvester());
-        if (j > 0) {
-            System.out.println("Hook");
-            event.setDropChance(0.0F);
-        }
     }
 
     @SubscribeEvent
