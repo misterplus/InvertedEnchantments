@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.ivrench.refmap.json",
   "mixins": [
+    "MixinCrossbowItem",
     "MixinEntityPlayer",
     "MixinExperienceOrbEntity",
     "MixinExplosion",

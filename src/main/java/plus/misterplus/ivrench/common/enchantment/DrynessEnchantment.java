@@ -17,7 +17,7 @@ public class DrynessEnchantment extends InvertedEnchantmentBase {
     }
 
     public int getMaxLevel() {
-        return 5;
+        return 3;
     }
 
     public boolean canApplyTogether(Enchantment ench) {

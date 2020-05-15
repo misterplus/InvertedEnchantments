@@ -192,7 +192,6 @@ public class GenericEventHandler {
             }
             int k = getMaxEnchantmentLevel(getEnchantment("unishot"), player);
             if (k > 0) {
-                System.out.println(event.getItem());
                 clearProjectiles(event.getItem());
                 event.setCanceled(true);
             }

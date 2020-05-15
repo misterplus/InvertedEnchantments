@@ -26,7 +26,7 @@ public class InvertedEnchantments {
     public final static InvertedEnchantmentsItemGroup MOD_TAB = new InvertedEnchantmentsItemGroup();
     public static EquipmentSlotType[] aEquipmentSlotType = new EquipmentSlotType[]{HEAD, CHEST, LEGS, FEET};
     public static boolean APRIL_FOOLS;
-    private static Logger logger = LogManager.getLogger(MOD_NAME);
+    private static final Logger logger = LogManager.getLogger(MOD_NAME);
 
     public InvertedEnchantments() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigManager.COMMON_SPEC);
@@ -48,5 +48,5 @@ public class InvertedEnchantments {
     public static Logger getLogger() {
         return logger;
     }
-    //TODO: ALL type noprotect, loot_less_digger,all 1.13+ new enchantment
+    //TODO: ALL type noprotect without projectile , loot_less_digger
 }

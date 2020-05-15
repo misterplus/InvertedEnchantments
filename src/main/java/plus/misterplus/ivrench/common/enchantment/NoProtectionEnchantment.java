@@ -2,8 +2,8 @@ package plus.misterplus.ivrench.common.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.util.DamageSource;
@@ -73,6 +73,7 @@ public class NoProtectionEnchantment extends InvertedEnchantmentBase {
     /**
      * Calculates the damage protection of the enchantment based on level and damage source passed.
      */
+    @Override
     public int calcModifierDamage(int level, DamageSource source) {
         if (source.canHarmInCreative()) {
             return 0;
