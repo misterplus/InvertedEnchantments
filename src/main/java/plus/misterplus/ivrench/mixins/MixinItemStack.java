@@ -1,8 +1,8 @@
 package plus.misterplus.ivrench.mixins;
 
-import net.minecraft.enchantment.EnchantmentDurability;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.enchantment.UnbreakingEnchantment;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,10 +23,10 @@ public abstract class MixinItemStack {
             method = "attemptDamageItem",
             at = @At(
                     value = "INVOKE_ASSIGN",
-                    target = "net/minecraft/enchantment/EnchantmentHelper.getEnchantmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I"
+                    target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I"
             )
     )
-    private void injectAttemptDamageItem(int amount, Random rand, EntityPlayerMP damager, CallbackInfoReturnable<Boolean> cir) {
+    private void injectAttemptDamageItem(int amount, Random rand, ServerPlayerEntity damager, CallbackInfoReturnable<Boolean> cir) {
         this.rand = rand;
     }
 
@@ -34,21 +34,21 @@ public abstract class MixinItemStack {
             method = "attemptDamageItem",
             at = @At(
                     value = "INVOKE_ASSIGN",
-                    target = "net/minecraft/enchantment/EnchantmentHelper.getEnchantmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I"
+                    target = "Lnet/minecraft/enchantment/EnchantmentHelper;getEnchantmentLevel(Lnet/minecraft/enchantment/Enchantment;Lnet/minecraft/item/ItemStack;)I"
             ),
-            name = "amount"
+            name = "p_96631_1_"
     )
-    private int modify_amout(int amount) {
+    private int modify_amout(int p_96631_1_) {
         int i1 = EnchantmentHelper.getEnchantmentLevel(getEnchantment("breaking"), (ItemStack) (Object) this);
         int j1 = 0;
 
-        for (int k = 0; i1 > 0 && k < amount; ++k) {
-            if (EnchantmentDurability.negateDamage((ItemStack) (Object) this, i1, rand)) {
+        for (int k = 0; i1 > 0 && k < p_96631_1_; ++k) {
+            if (UnbreakingEnchantment.negateDamage((ItemStack) (Object) this, i1, rand)) {
                 j1 += i1;
             }
         }
 
-        amount += j1;
-        return amount;
+        p_96631_1_ += j1;
+        return p_96631_1_;
     }
 }

@@ -1,0 +1,12 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+[[mods]]
+modId="ivrench"
+version="${file.jarVersion}"
+updateJSONURL="https://raw.githubusercontent.com/misterplus/InvertedEnchantments/master/update.json"
+displayName="Inverted Enchantments"
+authors="MisterPlus, Hao_cen"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/inverted-enchantments"
+description='''
+A mod that adds every inverted version of vanilla enchants.
+'''
