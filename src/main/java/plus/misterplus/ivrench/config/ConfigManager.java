@@ -9,6 +9,9 @@ public class ConfigManager {
     public static class Common {
         public final BooleanValue forceAprilFools;
         public final BooleanValue waterRemove;
+        public final BooleanValue debugCommand;
+        public final BooleanValue inGameSwitchApril;
+        public final BooleanValue inGameSwitchWater;
 
         public Common(ForgeConfigSpec.Builder builder) {
             forceAprilFools = builder
@@ -17,6 +20,19 @@ public class ConfigManager {
             waterRemove = builder
                     .comment("Allow Frost Melter break Packed Ice ,Blue Ice and Water Source")
                     .define("waterRemove.enabled", false);
+
+            //debug
+            debugCommand = builder
+                    .comment("Debug Command Main Switch")
+                    .define("debug.command", false);
+
+            inGameSwitchApril = builder
+                    .comment("Ingame Switch April Fools\nNeed open Debug")
+                    .define("forceAprilFools.ingame", false);
+
+            inGameSwitchWater = builder
+                    .comment("Ingame Switch Water Remove\nNeed open Debug ")
+                    .define("waterRemove.ingame", false);
         }
     }
 

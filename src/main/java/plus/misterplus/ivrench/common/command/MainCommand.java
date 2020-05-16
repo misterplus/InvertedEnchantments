@@ -14,8 +14,10 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import plus.misterplus.ivrench.InvertedEnchantments;
+import plus.misterplus.ivrench.config.ConfigManager;
 
 import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
+import static plus.misterplus.ivrench.common.enchantment.IceMelterEnchantment.waterRemove;
 
 public class MainCommand {
 
@@ -28,61 +30,66 @@ public class MainCommand {
                 .executes(ctx -> getAll(ctx.getSource()))
         );
 
-        builder.then(Commands
-                .literal("debug")
-                .requires(ctx -> ctx.hasPermissionLevel(4))
-                .executes(ctx -> debug(ctx.getSource()))
-        );
-
-        builder.then(Commands
+        if (ConfigManager.COMMON.debugCommand.get()) {
+            builder.then(Commands
+                    .literal("debug")
+                    .requires(ctx -> ctx.hasPermissionLevel(4))
+                    .executes(ctx -> debug(ctx.getSource()))
+            );
+            if (ConfigManager.COMMON.inGameSwitchApril.get()) {
+                builder.then(Commands
                         .literal("april")
                         .requires(ctx -> ctx.hasPermissionLevel(4))
-                        .executes(ctx ->  switchApril(ctx.getSource()))
-        );
-
+                        .executes(ctx -> switchApril(ctx.getSource()))
+                );
+            }
+            if (ConfigManager.COMMON.inGameSwitchWater.get()) {
+                builder.then(Commands
+                        .literal("water")
+                        .requires(ctx -> ctx.hasPermissionLevel(4))
+                        .executes(ctx -> switchWater(ctx.getSource()))
+                );
+            }
+        }
         dispatcher.register(builder);
     }
 
     private static int getAll(CommandSource source) {
         PlayerEntity player = (PlayerEntity) source.getEntity();
-        ItemStack item = new ItemStack(Items.ENCHANTED_BOOK);
-        for (Enchantment ench : Registry.ENCHANTMENT) {
-            if (InvertedEnchantments.MOD_ID.equals(ench.getRegistryName().getNamespace())) {
-                EnchantedBookItem.addEnchantment(item, new EnchantmentData(ench, ench.getMaxLevel()));
+        if (player != null) {
+            ItemStack item = new ItemStack(Items.ENCHANTED_BOOK);
+            for (Enchantment ench : Registry.ENCHANTMENT) {
+                if (InvertedEnchantments.MOD_ID.equals(ench.getRegistryName().getNamespace())) {
+                    EnchantedBookItem.addEnchantment(item, new EnchantmentData(ench, ench.getMaxLevel()));
+                }
             }
+            item.setDisplayName(new TranslationTextComponent("item.ivrench.ivrench_book.name"));
+            player.addItemStackToInventory(item);
+            source.sendFeedback(new TranslationTextComponent("ivrench.command.ivrench.succeed"), true);
         }
-        item.setDisplayName(new TranslationTextComponent("item.ivrench.ivrench_book.name"));
-        player.addItemStackToInventory(item);
-        source.sendFeedback(new TranslationTextComponent("ivrench.command.ivrench.succeed"), true);
-
         return 1;
     }
 
-    private static int switchApril(CommandSource source){
-        PlayerEntity player = (PlayerEntity) source.getEntity();
+    private static int switchApril(CommandSource source) {
         APRIL_FOOLS = !APRIL_FOOLS;
-        player.sendMessage(new StringTextComponent(String.valueOf(APRIL_FOOLS)));
+        source.sendFeedback(new StringTextComponent(String.valueOf(APRIL_FOOLS)), true);
+        return 1;
+    }
+
+    private static int switchWater(CommandSource source) {
+        waterRemove = !waterRemove;
+        source.sendFeedback(new StringTextComponent(String.valueOf(waterRemove)), true);
         return 1;
     }
 
     private static int debug(CommandSource source) {
         PlayerEntity player = (PlayerEntity) source.getEntity();
-        //send debugmsg to game
-//        int i=0;
-//        for (Enchantment ench : Registry.ENCHANTMENT) {
-//            InvertedEnchantments.getLogger().info(ench.getDisplayName(1).getString());
-//            if (InvertedEnchantments.MOD_ID.equals(ench.getRegistryName().getNamespace())) {
-//                ItemStack item = new ItemStack(Items.ENCHANTED_BOOK);
-//                EnchantedBookItem.addEnchantment(item, new EnchantmentData(ench, ench.getMaxLevel()));
-//                player.addItemStackToInventory(item);
-//                i++;
-//            }
-//        }
-//        InvertedEnchantments.getLogger().info(i);
-        String debugstr = player.getHeldItemMainhand().serializeNBT().toString();
-        StringTextComponent debugmsg = new StringTextComponent(debugstr);
-        player.sendMessage(debugmsg);
-        InvertedEnchantments.getLogger().debug(debugstr);
+        if (player != null) {
+            String debugstr = player.getHeldItemMainhand().serializeNBT().toString();
+            StringTextComponent debugmsg = new StringTextComponent(debugstr);
+            player.sendMessage(debugmsg);
+            InvertedEnchantments.getLogger().debug(debugstr);
+        }
         return 1;
     }
 }

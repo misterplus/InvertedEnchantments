@@ -52,17 +52,19 @@ public class MixinMethods {
     }
 
     public static List<ItemStack> injectBlockDrop(Entity p_220077_4_, List<ItemStack> returnValue) {
-        int l = EnchantmentHelper.getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), (LivingEntity) p_220077_4_);
-        if (l > 0) {
-            for (ItemStack itemStack : returnValue) {
-                int count = itemStack.getCount();
-                Random r = new Random();
-                for (int i = 1; i <= l; i++) {
-                    if (r.nextInt(i) >= 1) {
-                        count = count / i;
+        if (p_220077_4_ != null) {
+            int l = EnchantmentHelper.getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), (LivingEntity) p_220077_4_);
+            if (l > 0) {
+                for (ItemStack itemStack : returnValue) {
+                    int count = itemStack.getCount();
+                    Random r = new Random();
+                    for (int i = 1; i <= l; i++) {
+                        if (r.nextInt(i) >= 1) {
+                            count = count / i;
+                        }
                     }
+                    itemStack.setCount(Math.max(1, count));
                 }
-                itemStack.setCount(Math.max(1, count));
             }
         }
         return returnValue;

@@ -30,10 +30,10 @@ public class InvertedEnchantmentsItemGroup extends ItemGroup {
     @Override
     public void fill(@Nonnull NonNullList<ItemStack> list) {
         for (Enchantment e : Registry.ENCHANTMENT ) {
-            if ((InvertedEnchantments.MOD_ID.equals(e.getRegistryName().getNamespace()))) {
+            if ((e.getRegistryName().getNamespace().equals(InvertedEnchantments.MOD_ID))) {
                 ItemStack ebook = new ItemStack(Items.ENCHANTED_BOOK);
                 EnchantedBookItem.addEnchantment(ebook, new EnchantmentData(e, e.getMaxLevel()));
-                ebook.setDisplayName(new TranslationTextComponent(APRIL_FOOLS ? "item.minecraft.enchanted_book" : "item.ivrench.ivrench_book.name" ));
+                ebook.setDisplayName(new TranslationTextComponent(APRIL_FOOLS ? "item.minecraft.enchanted_book" : "item.ivrench.ivrench_book.name"));
                 list.add(ebook);
             }
         }

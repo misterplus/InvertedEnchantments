@@ -16,7 +16,7 @@ import plus.misterplus.ivrench.config.ConfigManager;
 import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
 
 public class IceMelterEnchantment extends InvertedEnchantmentBase {
-    private static final boolean waterRemove = ConfigManager.COMMON.waterRemove.get();
+    public static boolean waterRemove = ConfigManager.COMMON.waterRemove.get();
     public IceMelterEnchantment(Enchantment.Rarity rarityIn, EquipmentSlotType... slots) {
         super(rarityIn, EnchantmentType.ARMOR_FEET, slots);
     }
