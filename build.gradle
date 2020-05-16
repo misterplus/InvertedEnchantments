@@ -84,10 +84,7 @@ artifacts {
 }
 
 repositories {
-    maven {
-        name = "jei"
-        url = "https://dvs1.progwml6.com/files/maven"
-    }
+    //Mixin
     maven {
         url = 'https://dist.creeper.host/Sponge/maven'
     }
