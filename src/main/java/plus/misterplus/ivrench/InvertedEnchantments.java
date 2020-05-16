@@ -8,6 +8,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.launch.MixinBootstrap;
 import plus.misterplus.ivrench.common.command.MainCommand;
 import plus.misterplus.ivrench.common.item.InvertedEnchantmentsItemGroup;
 import plus.misterplus.ivrench.config.ConfigManager;
@@ -33,7 +34,7 @@ public class InvertedEnchantments {
         APRIL_FOOLS = ConfigManager.COMMON.forceAprilFools.get() || isAprilFools();
         MinecraftForge.EVENT_BUS.addListener(this::serverStarting);
         logger.info(MOD_ID+" Loaded.");
-
+        logger.info("Mixin Version: "+MixinBootstrap.VERSION);
     }
 
     private static boolean isAprilFools() {
@@ -44,7 +45,6 @@ public class InvertedEnchantments {
         MainCommand.register(event.getCommandDispatcher());
         MinecraftForge.EVENT_BUS.register(GenericEventHandler.class);
     }
-
     public static Logger getLogger() {
         return logger;
     }
