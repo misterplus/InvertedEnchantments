@@ -27,10 +27,12 @@ public abstract class MixinLivingEntity extends Entity {
             at = @At(
                     value = "RETURN",
                     ordinal = 2
-            )
+            ),
+            cancellable = true
     )
     private void injectApplyPotionDamageCalculations(DamageSource source, float damage, CallbackInfoReturnable<Float> cir) {
         damage = MixinMethods.injectApplyPotionDamageCalculations(source, damage, cir, EnchantmentHelper.getEnchantmentModifierDamage(this.getArmorInventoryList(), source));
+        cir.setReturnValue(damage);
     }
 
 

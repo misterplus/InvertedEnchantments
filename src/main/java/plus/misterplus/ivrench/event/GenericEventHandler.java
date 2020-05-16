@@ -175,7 +175,9 @@ public class GenericEventHandler {
                 player.attackEntityFrom(DamageSource.MAGIC, (float) (event.getAmount() * l * 0.5));
                 event.setAmount(0);
             }
-
+        }
+        if (targetEntity instanceof PlayerEntity) {
+            System.out.println("yes");
         }
     }
 

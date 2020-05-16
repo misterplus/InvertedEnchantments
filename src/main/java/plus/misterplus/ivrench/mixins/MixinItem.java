@@ -1,20 +1,17 @@
 package plus.misterplus.ivrench.mixins;
 
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IItemProvider;
 import net.minecraft.world.World;
 import net.minecraftforge.common.extensions.IForgeItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel;
 import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
@@ -29,17 +26,6 @@ public abstract class MixinItem implements IForgeItem {
         }
         return MobEntity.getSlotForItemStack(stack) == armorType;
     }
-//    @Inject(
-//            method = "canEquip",
-//            at = @At("TAIL"),
-//            remap = false,
-//            cancellable = true
-//    )
-//    private void injectIsValidArmor(ItemStack stack, EquipmentSlotType armorType, Entity entity, CallbackInfoReturnable<Boolean> cir) {
-//        if (EnchantmentHelper.getEnchantmentLevel(getEnchantment("unbinding_curse"), stack) > 0) {
-//            cir.setReturnValue(false);
-//        }
-//    }
 
     @Inject(
             method = "inventoryTick",

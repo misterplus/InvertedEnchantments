@@ -1,21 +1,13 @@
 package plus.misterplus.ivrench.mixins;
 
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import plus.misterplus.ivrench.common.utils.MixinMethods;
-
-import java.util.Map;
-
-import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.getEnchantment;
 
 @Mixin(ExperienceOrbEntity.class)
 public abstract class MixinExperienceOrbEntity {

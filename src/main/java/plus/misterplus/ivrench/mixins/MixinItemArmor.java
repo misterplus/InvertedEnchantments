@@ -38,7 +38,7 @@ public abstract class MixinItemArmor {
     private void injectOnItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn, CallbackInfoReturnable<ActionResult<ItemStack>> cir) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         if (getEnchantmentLevel(getEnchantment("unbinding_curse"), itemstack) > 0) {
-            cir.setReturnValue(new ActionResult<ItemStack>(ActionResultType.FAIL, itemstack));
+            cir.setReturnValue(new ActionResult<>(ActionResultType.FAIL, itemstack));
         }
     }
 }

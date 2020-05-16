@@ -1,0 +1,15 @@
+{
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/inverted-enchantments",
+  "1.12.2": {
+    "1.0.8": "Fixed a issue where lureless enchant has a wrong fake name"
+  },
+  "1.15.2": {
+    "1.1.0": "First Version in 1.15.2"
+  },
+  "promos": {
+    "1.12.2-latest": "1.0.8",
+    "1.12.2-recommended": "1.0.8",
+    "1.15.2-latest": "1.1.0",
+    "1.15.2-recommended": "1.1.0"
+  }
+}

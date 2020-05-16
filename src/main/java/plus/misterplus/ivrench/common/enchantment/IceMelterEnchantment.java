@@ -2,26 +2,16 @@ package plus.misterplus.ivrench.common.enchantment;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.DepthStriderEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.FrostWalkerEnchantment;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.fluid.WaterFluid;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.Dimension;
-import net.minecraftforge.common.util.BlockSnapshot;
-import net.minecraftforge.event.ForgeEventFactory;
 import plus.misterplus.ivrench.config.ConfigManager;
-
-import java.util.Iterator;
 
 import static plus.misterplus.ivrench.InvertedEnchantments.APRIL_FOOLS;
 
