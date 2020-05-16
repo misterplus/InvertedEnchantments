@@ -7,6 +7,4 @@ updateJSONURL="https://raw.githubusercontent.com/misterplus/InvertedEnchantments
 displayName="Inverted Enchantments"
 authors="MisterPlus, Hao_cen"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/inverted-enchantments"
-description='''
-A mod that adds every inverted version of vanilla enchants.
-'''
+description='''A mod that adds every inverted version of vanilla enchants.'''

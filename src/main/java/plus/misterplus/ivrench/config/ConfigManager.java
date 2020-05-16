@@ -27,11 +27,11 @@ public class ConfigManager {
                     .define("debug.command", false);
 
             inGameSwitchApril = builder
-                    .comment("Ingame Switch April Fools\nNeed open Debug")
+                    .comment("Ingame Switch April Fools -- Need open Debug")
                     .define("forceAprilFools.ingame", false);
 
             inGameSwitchWater = builder
-                    .comment("Ingame Switch Water Remove\nNeed open Debug ")
+                    .comment("Ingame Switch Water Remove -- Need open Debug ")
                     .define("waterRemove.ingame", false);
         }
     }
