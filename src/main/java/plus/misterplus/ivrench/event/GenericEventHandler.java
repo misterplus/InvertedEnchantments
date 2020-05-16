@@ -72,7 +72,7 @@ public class GenericEventHandler {
     @SubscribeEvent
     public static void onArrowImpactEvent(ProjectileImpactEvent event) {
         if (event.getEntity().getTags().contains("ivrench_fake_arrow") && event.getRayTraceResult().getType() == RayTraceResult.Type.ENTITY) {
-            System.out.println(((EntityRayTraceResult) event.getRayTraceResult()).getEntity().hurtResistantTime = 20);
+            ((EntityRayTraceResult) event.getRayTraceResult()).getEntity().hurtResistantTime = 20;
         }
     }
 
@@ -150,9 +150,7 @@ public class GenericEventHandler {
             LivingEntity player = (LivingEntity) hunter;
             int i = getMaxEnchantmentLevel(getEnchantment("powerless"), player);
             if (i > 0) {
-                System.out.println(event.getAmount());
                 event.setAmount(Math.max(event.getAmount() - (float) i, 0.5f));
-                System.out.println(event.getAmount());
             }
             int j = getMaxEnchantmentLevel(getEnchantment("self_punch"), player);
             if (j > 0) {
@@ -175,9 +173,6 @@ public class GenericEventHandler {
                 player.attackEntityFrom(DamageSource.MAGIC, (float) (event.getAmount() * l * 0.5));
                 event.setAmount(0);
             }
-        }
-        if (targetEntity instanceof PlayerEntity) {
-            System.out.println("yes");
         }
     }
 
