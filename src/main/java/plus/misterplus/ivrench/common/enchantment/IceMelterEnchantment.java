@@ -27,17 +27,19 @@ public class IceMelterEnchantment extends InvertedEnchantmentBase {
             BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
             for (BlockPos blockpos$mutable1 : BlockPos.getAllInBoxMutable(pos.add(-f, -1.0D, -f), pos.add(f, -1.0D, f))) {
                 if (blockpos$mutable1.withinDistance(living.getPositionVec(),f)){
-                    blockpos$mutable.setPos(blockpos$mutable1.getX(), blockpos$mutable1.getY() + 1, blockpos$mutable1.getZ());
+                    blockpos$mutable.setX(blockpos$mutable1.getX());
+                    blockpos$mutable.setY(blockpos$mutable1.getY() + 1);
+                    blockpos$mutable.setY(blockpos$mutable1.getZ());
                     BlockState blockstate = worldIn.getBlockState(blockpos$mutable);
 
                     if (blockstate.getMaterial() == Material.AIR) {
                         BlockState blockstate1 = worldIn.getBlockState(blockpos$mutable1);
 
-                        if ( ( APRIL_FOOLS || waterRemove ) && blockstate1.getBlock() == Blocks.WATER && blockstate1.getFluidState().isSource()) {
+                        if ((APRIL_FOOLS || waterRemove) && blockstate1.getBlock() == Blocks.WATER && blockstate1.getFluidState().isSource()) {
                             worldIn.setBlockState(blockpos$mutable1, Blocks.AIR.getDefaultState(), 11);
                         }
                         if (blockstate1.getBlock() == Blocks.ICE) {
-                            if(!worldIn.getDimension().isNether()) {
+                            if (!worldIn.getDimension().isNether()) {
                                 worldIn.setBlockState(blockpos$mutable1, Blocks.WATER.getDefaultState(), 11);
                             } else {
                                 worldIn.setBlockState(blockpos$mutable1, Blocks.AIR.getDefaultState(), 11);

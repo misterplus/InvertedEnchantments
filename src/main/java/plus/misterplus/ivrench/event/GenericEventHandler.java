@@ -53,7 +53,7 @@ public class GenericEventHandler {
             Random r = new Random();
             if (r.nextInt(a) >= 1) {
                 Entity fish = new CodEntity(EntityType.COD, event.getHookEntity().getEntityWorld());
-                fish.setPosition(event.getHookEntity().getPosX(), event.getHookEntity().getPosY(), event.getHookEntity().getPosZ());
+                fish.setPosition(event.getHookEntity().getPosition().getX(), event.getHookEntity().getPosition().getY(), event.getHookEntity().getPosition().getZ());
                 event.getHookEntity().getEntityWorld().addEntity(fish);
                 event.setCanceled(true);
             }
@@ -62,7 +62,7 @@ public class GenericEventHandler {
         if (b > 0) {
             Random r = new Random();
             if (r.nextInt(b) >= 1) {
-                Entity tnt = new TNTEntity(event.getHookEntity().getEntityWorld(), event.getHookEntity().getPosX(), event.getHookEntity().getPosY(), event.getHookEntity().getPosZ(), event.getEntityLiving());
+                Entity tnt = new TNTEntity(event.getHookEntity().getEntityWorld(), event.getHookEntity().getPosition().getX(), event.getHookEntity().getPosition().getY(), event.getHookEntity().getPosition().getZ(), event.getEntityLiving());
                 event.getHookEntity().getEntityWorld().addEntity(tnt);
                 event.setCanceled(true);
             }
@@ -83,18 +83,18 @@ public class GenericEventHandler {
         int i = getMaxEnchantmentLevel(getEnchantment("projectile_noprotection"), player);
         if (i > 0) {
             i = i + 3;
-            BlockPos pos = new BlockPos(player.getPosX(), player.getPosY(), player.getPosZ());
+            BlockPos pos = new BlockPos(player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
             BlockPos pos1 = pos.offset(Direction.UP).offset(Direction.WEST, i).offset(Direction.NORTH, i);
             BlockPos pos2 = pos.offset(Direction.DOWN).offset(Direction.EAST, i).offset(Direction.SOUTH, i);
             List<AbstractArrowEntity> list = world.getEntitiesWithinAABB(AbstractArrowEntity.class, new AxisAlignedBB(pos1, pos2));
             for (AbstractArrowEntity arrow : list) {
-                arrow.setVelocity(player.getPosX() - arrow.getPosX(), player.getPosYEye() - arrow.getPosY(), player.getPosZ() - arrow.getPosZ());
+                arrow.setVelocity(player.getPosition().getX() - arrow.getPosition().getX(), player.getPosition().getY() - arrow.getPosition().getY(), player.getPosition().getZ() - arrow.getPosition().getZ());
                 if (APRIL_FOOLS) player.hurtResistantTime = 0;
             }
 
             List<ProjectileItemEntity> list2 = world.getEntitiesWithinAABB(ProjectileItemEntity.class, new AxisAlignedBB(pos1, pos2));
             for (ProjectileItemEntity projectile : list2) {
-                projectile.setVelocity(player.getPosX() - projectile.getPosX(), player.getPosYEye() - projectile.getPosY(), player.getPosZ() - projectile.getPosZ());
+                projectile.setVelocity(player.getPosition().getX() - projectile.getPosition().getX(), player.getPosition().getY() - projectile.getPosition().getY(), player.getPosition().getZ() - projectile.getPosition().getZ());
             }
 
 
@@ -194,7 +194,7 @@ public class GenericEventHandler {
             }
             int i = getMaxEnchantmentLevel(getEnchantment("self_channeling"), player);
             if (i > 0) {
-                LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(player.getEntityWorld(), player.getPosX(), player.getPosY(), player.getPosZ(), false);
+                LightningBoltEntity lightningBoltEntity = new LightningBoltEntity(player.getEntityWorld(), player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ(), false);
                 lightningBoltEntity.createSpawnPacket();
             }
             int m = getMaxEnchantmentLevel(getEnchantment("betray"), player);
