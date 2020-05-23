@@ -23,13 +23,14 @@ public abstract class MixinEntityPlayer {
             name = "flag3"
     )
     private boolean modify_flag3(boolean flag3) {
+        boolean result = flag3;
         ItemStack itemstack = ((LivingEntity) (Object) this).getHeldItem(Hand.MAIN_HAND);
         if (itemstack.getItem() instanceof SwordItem) {
             int level = getMaxEnchantmentLevel(getEnchantment("edgeless"), ((LivingEntity) (Object) this));
             if (level > 0) {
-                return ((LivingEntity) (Object) this).getEntityWorld().rand.nextInt(level + 1) == 0;
+                result = ((LivingEntity) (Object) this).getEntityWorld().rand.nextInt(level + 1) == 0;
             }
         }
-        return flag3;
+        return result;
     }
 }

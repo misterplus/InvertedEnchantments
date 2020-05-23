@@ -24,12 +24,10 @@ public class IceMelterEnchantment extends InvertedEnchantmentBase {
     public static void freezeNearby(LivingEntity living, World worldIn, BlockPos pos, int level) {
         if (living.onGround) {
             float f = (float) Math.min(16, 2 + level);
-            BlockPos.Mutable blockpos$mutable = new BlockPos.Mutable();
+            BlockPos.MutableBlockPos blockpos$mutable = new BlockPos.MutableBlockPos();
             for (BlockPos blockpos$mutable1 : BlockPos.getAllInBoxMutable(pos.add(-f, -1.0D, -f), pos.add(f, -1.0D, f))) {
                 if (blockpos$mutable1.withinDistance(living.getPositionVec(),f)){
-                    blockpos$mutable.setX(blockpos$mutable1.getX());
-                    blockpos$mutable.setY(blockpos$mutable1.getY() + 1);
-                    blockpos$mutable.setY(blockpos$mutable1.getZ());
+                    blockpos$mutable.setPos(blockpos$mutable1.getX(), blockpos$mutable1.getY() + 1, blockpos$mutable1.getZ());
                     BlockState blockstate = worldIn.getBlockState(blockpos$mutable);
 
                     if (blockstate.getMaterial() == Material.AIR) {

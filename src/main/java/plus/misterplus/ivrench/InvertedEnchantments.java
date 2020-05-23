@@ -33,8 +33,8 @@ public class InvertedEnchantments {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ConfigManager.COMMON_SPEC);
         APRIL_FOOLS = ConfigManager.COMMON.forceAprilFools.get() || isAprilFools();
         MinecraftForge.EVENT_BUS.addListener(this::serverStarting);
-        logger.info(MOD_ID+" Loaded.");
-        logger.info("Mixin Version: "+MixinBootstrap.VERSION);
+        logger.info(MOD_ID + " Loaded.");
+        logger.info("Mixin Version: " + MixinBootstrap.VERSION);
     }
 
     private static boolean isAprilFools() {

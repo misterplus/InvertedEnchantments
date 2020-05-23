@@ -20,7 +20,7 @@ import static plus.misterplus.ivrench.common.utils.InvertedEnchantmentHelper.get
 public abstract class MixinItemArmor {
 
     @Inject(
-            method = "func_226626_a_",
+            method = "dispenseArmor",
             at = @At("HEAD"),
             cancellable = true
     )

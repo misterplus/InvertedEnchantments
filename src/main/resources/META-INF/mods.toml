@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[28,)"
 [[mods]]
 modId="ivrench"
 version="${file.jarVersion}"
