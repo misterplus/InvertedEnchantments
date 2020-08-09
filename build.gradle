@@ -1,9 +1,9 @@
 buildscript {
     repositories {
-        maven { url = 'https://files.minecraftforge.net/maven' }
+         maven { url = 'http://lss233.littleservice.cn/repositories/minecraft' }
+        maven { url = 'https://dist.creeper.host/Sponge/maven' }
         jcenter()
         mavenCentral()
-        maven { url = 'https://dist.creeper.host/Sponge/maven' }
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
@@ -91,7 +91,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:' + minecraftVersion + '-' + forgeVersion
-    compile 'org.spongepowered:mixin:0.8-SNAPSHOT'
+    compile 'org.spongepowered:mixin:0.8'
 
 }
 
