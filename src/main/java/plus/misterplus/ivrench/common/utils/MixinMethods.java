@@ -52,7 +52,7 @@ public class MixinMethods {
     }
 
     public static List<ItemStack> injectBlockDrop(Entity p_220077_4_, List<ItemStack> returnValue) {
-        if (p_220077_4_ != null) {
+        if (p_220077_4_ != null && !(p_220077_4_ instanceof ArrowEntity)) {
             int l = EnchantmentHelper.getMaxEnchantmentLevel(getEnchantment("loot_less_digger"), (LivingEntity) p_220077_4_);
             if (l > 0) {
                 for (ItemStack itemStack : returnValue) {
